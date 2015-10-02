@@ -1,0 +1,22 @@
+# Version 3.1.0.89
+
+<IfModule mod_rewrite.c>
+    Options +FollowSymlinks
+
+    RewriteEngine On
+
+    RewriteBase /
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !.*\.(css|js|png|jpg|jpeg|gif|txt|xml)
+    RewriteCond %{REQUEST_URI} !^/views/.*(html)
+    RewriteRule (.*) index.html [L]
+
+</IfModule>
+
+# Or, compress certain file types by extension:
+
+<files *.html>
+SetOutputFilter DEFLATE
+</files>
