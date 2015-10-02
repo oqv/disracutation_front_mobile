@@ -59,22 +59,28 @@
 }
 
 .product_description{
-	margin-top: 15px;
-	margin-bottom: 20px;
+/*	margin-top: 15px;
+	margin-bottom: 20px;*/
 }
 
 .panel-group>.panel-default {  
-  border-radius: 0em 0em 0em 0em;
+  border-radius: none;
+  border: none;
+}
+
+.panel-default{
+	border: none;
 }
 
 .panel-heading {	
 	border-radius: 0px;
+	border: none;
+	border-bottom: 1px solid black;
 }
-.panel-default>.panel-heading {  
-  border-left: 0em;
-  border-right: 0em; 
+.panel-default>.panel-heading {     
   margin-bottom: 0px;
   background-color: white;
+  border-color: transparent;
 }
 .panel-heading .accordion-toggle:after {
     /* symbol for "opening" panels */
@@ -88,8 +94,17 @@
     content: "\002b";    /* adjust as needed, taken from bootstrap.css */
 }
 
-.panel-group .panel+.panel {
+.panel-body {
+	border-top: none !important;
+	margin: 0;
+}
+
+.panel-group .panel:first-child {
+	border-top: 1px solid black;   
+}
+
+.panel-group .panel {
 	margin-top: 0.1px; 
-	border-bottom: 0px;
-  border-top: 0px;   
+	border-bottom: 1px solid black;
+  
 }
