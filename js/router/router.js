@@ -8,13 +8,13 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
       .state('app.produto',{
          url: "/:id.html",
-         templateUrl: "views/produto/produto.html",
+         templateUrl: "views/product/product.html",
          controller: "productCtrl"
       })
 
       .state('app.novidades', {
          url: "/novidades/:para1/:para2/:para3/:para4",
-         templateUrl: "views/lancamentos/lancamentos.html",
+         templateUrl: "views/catalog/catalog.html",
          params:{
             type: 'novidades',
             para1: {squash: true, value: null},
@@ -27,7 +27,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
       .state('app.catalog', {
          url: "/:para1/:para2/:para3/:para4",
-         templateUrl: "views/lancamentos/lancamentos.html",
+         templateUrl: "views/catalog/catalog.html",
          params:{
             para1: {squash: true, value: null},
             para2: {squash: true, value: null},
@@ -37,6 +37,6 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
          controller: "catalogCtrl"
       })
 
-   $urlRouterProvider.otherwise("/");
+   $urlRouterProvider.otherwise("/novidades");
 
 });
