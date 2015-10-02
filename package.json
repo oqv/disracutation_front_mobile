@@ -1,0 +1,22 @@
+{
+  "name": "disracutation_front_mobile",
+  "version": "1.0.0",
+  "description": "Gulp de minificação",
+  "author": "Avassaladores <dev@oqvestir.com.br>",
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-concat": "^2.6.0",
+    "gulp-strip-css-comments": "^1.2.0",
+    "gulp-uglify": "*",
+    "gulp-watch": "^4.3.5",
+    "gulp-minify-html": "*",
+    "gulp-rev": "*",
+    "gulp-rev-replace": "*",
+    "gulp-html-replace": "*",
+    "gulp-minify-css": "*",
+    "gulp-awspublish": "*",
+    "gulp-cloudfront": "*",
+    "gulp-s3": "*",
+    "gulp-gzip": "*"
+  }
+}
