@@ -2,78 +2,11 @@
    <div class="row">
         <div class="col-lg-12 col-xs-12">
 
-          <!-- FILTROS -->
-          <div class="row action-filters">
-            <div class="col-xs-6 col-md-6">
-             <select class="form-control">
-                <option selected>Ordernar por</option>
-                <option>Novidades</option>
-                <option>Preço</option>
-             </select>
-            </div>
-            <div class="col-xs-6 col-md-6">
-             <button class="btn btn-default btn-block filter-button" toggle-filter>Filtrar <i class="glyphicon glyphicon-plus pull-right"></i></button>
-            </div>
-          </div>
-
-          <!-- FILTROS -->
-          <div class="row hidden filter-wraper">
-            <div class="filters">
-             <div class="row header-filter">
-                <div class="col-xs-12">
-                  <p class="pull-left">Filtrar</p>
-                  <span class="pull-right"><i class="glyphicon glyphicon-remove filter-button" toggle-filter></i></span>
-                </div>
-             </div>
-             <div class="row-fluid">
-                <div class="col-xs-6">
-                  <select class="form-control">
-                    <option selected>Tamanho</option>
-                  </select>
-                </div>
-                <div class="col-xs-6">
-                  <select class="form-control">
-                    <option selected>Cor</option>
-                  </select>
-                </div>
-             </div>
-             <div class="row-fluid fix-top">
-                <div class="col-xs-6">
-                  <select class="form-control">
-                    <option selected>Marcas</option>
-                  </select>
-                </div>
-                <div class="col-xs-6">
-                  <select class="form-control">
-                    <option selected>Faixa de preço</option>
-                  </select>
-                </div>
-             </div>
-            </div>
-          </div>
+          <filters></filters>
 
           <hr class="divider"></hr>
 
-          <!-- PAGINACAO -->
-          <div class="row pagination-wraper">
-            <ul class="pagination">
-             <li>
-                <a href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-             </li>
-             <li><a href="#">1</a></li>
-             <li><a href="#">2</a></li>
-             <li><a href="#">3</a></li>
-             <li><a href="#">4</a></li>
-             <li><a href="#">5</a></li>
-             <li>
-                <a href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-             </li>
-            </ul>
-          </div>
+          <pagination></pagination>
 
           <!-- LISTAGEM DE PRODUTOS -->
           <div class="row">
