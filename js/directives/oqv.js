@@ -121,3 +121,28 @@ app.directive('dynamicHref', ['identParam', '$stateParams', function (identParam
       }
     }
 }]);
+
+//Toggle Menu
+app.directive('toggleMenu', function(){
+   return {
+      restrict: 'A',
+      link: function(scope, element, attr) {
+        $(element).on('click', function(){
+          $("#wrapper").toggleClass("toggled");
+        })
+      }
+   }
+});
+
+//Toggle Filter
+app.directive('toggleFilter', function(){
+   return {
+      restrict: 'A',
+      link: function(scope, element, attr) {
+        $(element).on('click', function(){
+          $('.action-filters').toggleClass("hidden");
+          $('.filter-wraper').toggleClass("hidden");
+        })
+      }
+   }
+});

@@ -11,7 +11,7 @@
 
     <!-- Bootstrap -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
     <link href="assets/css/main.css" rel="stylesheet">
     <link href="assets/css/catalog.css" rel="stylesheet">
@@ -26,7 +26,7 @@
   </head>
   <body>
 
-    <div id="wrapper">
+    <div id="wrapper" ng-class="{'toggled' : toggledMenu}">
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
@@ -81,11 +81,8 @@
 
     </div>
 
-    <!-- build:js -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="assets/js/bootstrap.min.js"></script>
 
    <!-- CDN ANGULAR -->
    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
@@ -100,8 +97,11 @@
    <script src="js/libs/capitalize.min.js"></script>
    <script src="js/libs/underscore-min.js"></script>
 
-
+   <!-- build:js -->
    <!-- CONFIG -->
+   <!-- Include all compiled plugins (below), or include individual files as needed -->
+   <script src="assets/js/bootstrap.min.js"></script>
+   
    <script src="js/app.js"></script>
    <script src="js/config.js"></script>
    <script src="js/router/router.js"></script>
@@ -120,20 +120,6 @@
    <script src="js/controllers/product/productCtrl.js"></script>
    <!-- endbuild -->
 
-    <script src="assets/js/bootstrap-select.min.js"></script>
-
-    <script>
-    $(".navbar-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
-
-    $(".filter-button").click(function(e){
-      e.preventDefault();
-      $('.action-filters').toggleClass("hidden");
-      $('.filter-wraper').toggleClass("hidden");
-    });
-    </script>
 
   </body>
 </html>

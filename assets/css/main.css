@@ -303,3 +303,76 @@ hr{
 footer .social{
   margin-top: 20px;
 }
+
+footer .social ul{
+  display: inline-block;
+  margin-left: -45px;
+}
+
+footer .social ul li:first-child, footer .payments ul li:first-child{
+  margin-left: -5px;
+}
+
+footer .social ul li, footer .payments ul li{
+  float: left;
+  width: 40px;
+  list-style: none;
+  margin-right: 5px;
+}
+
+footer .social ul li a, footer .payments ul li a{
+  font-size: 22px;
+  color: #666;
+  border: 1px solid #666;
+  padding: 5px;
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+footer .payments {
+  margin-top: 20px;
+  text-align: center;
+}
+
+footer .payments ul{
+  display: inline-block;
+  margin-left: -45px;
+}
+
+footer .payments ul li a, footer .ebit ul li a{
+  border: none;
+}
+
+footer .divider{
+  border-top: 1px solid #eee;
+}
+
+footer .ebit{
+  margin-top: 15px;
+  text-align: center;
+}
+
+footer .ebit > div{
+  margin-top: 10px;
+}
+
+footer .ebit ul{
+  display: inline-block;
+  margin-left: -45px;
+  margin-top: 20px;
+}
+
+footer .ebit ul li{
+  float: left;
+  list-style: none;
+}
+
+footer .ebit ul li a{
+  width: auto;
+  margin-left: 15px;
+}
+
+footer .ebit p+p{
+  margin-top: 20px;
+}
