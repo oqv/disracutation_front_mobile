@@ -1,3 +1,7 @@
-app.controller('catalogCtrl', ['$scope', function($scope){
+app.controller('catalogCtrl', ['$scope', 'FormProducts', function($scope, FormProducts){
+
+   var urlParams = angular.copy(FormProducts);
+
+   
 
 }]);
