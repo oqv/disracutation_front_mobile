@@ -3,7 +3,11 @@
 }
 
 .product_main_image{
-	margin-top: 22px;	
+	margin-top: 22px;		
+}
+.product_main_image img{
+	text-align: center;
+  margin: 0 auto;		
 }
 
 .product_price{
@@ -50,9 +54,42 @@
 
 .product_whishlist{
 	margin-top: 12px;
+	margin-bottom: 20px;
 	text-align: center;
 }
 
 .product_description{
+	margin-top: 15px;
 	margin-bottom: 20px;
+}
+
+.panel-group>.panel-default {  
+  border-radius: 0em 0em 0em 0em;
+}
+
+.panel-heading {	
+	border-radius: 0px;
+}
+.panel-default>.panel-heading {  
+  border-left: 0em;
+  border-right: 0em; 
+  margin-bottom: 0px;
+  background-color: white;
+}
+.panel-heading .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\2212";    /* adjust as needed, taken from bootstrap.css */
+    float: right;        /* adjust as needed */
+    color: grey;         /* adjust as needed */    
+}
+.panel-heading .accordion-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\002b";    /* adjust as needed, taken from bootstrap.css */
+}
+
+.panel-group .panel+.panel {
+	margin-top: 0.1px; 
+	border-bottom: 0px;
+  border-top: 0px;   
 }
