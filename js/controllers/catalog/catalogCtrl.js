@@ -21,6 +21,17 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
 
     var numProds = 0;
 
+    $scope.isNovidade = false;
+   $scope.isProduto = false;
+
+   var initUrlParameters = function(){
+     if($stateParams.type == 'novidades'){
+       urlParams.page_origin = 'novidades';
+       $scope.isNovidade = true;
+     }
+   }
+   initUrlParameters();
+
     $scope.paginacao = function(count){
 
      count = parseInt(count);
