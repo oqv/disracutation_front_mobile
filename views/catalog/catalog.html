@@ -10,14 +10,15 @@
 
           <!-- LISTAGEM DE PRODUTOS -->
           <div class="row">
-
             <!-- PRODUTOS 2x -->
             <div class="row">
-              <div class="col-xs-6 col-md-6" ng-repeat="item in products">
+              <div class="col-xs-6 col-md-6" ng-repeat="item in products" infinite-scroll="loadMoreProducts()" infinite-scroll-distance="3" infinite-scroll-disabled="produtos.length == buffer_products.length">
                 <product item="item"></product>
               </div>
             </div>
-
         </div>
+
+        <pagination></pagination>
+
    </div>
 </div>

@@ -174,14 +174,14 @@ app.directive('filterPrice', function() {
   }
 });
 
-app.directive('filterOrder', function() {
+app.directive('setOrder', function() {
   return {
     restrict: 'A',
     link: function(scope, element, attrs) {
       $(element).on('change', function() {
         var value = $(element).find('option:selected')[0].value;
         scope.$apply(function() {
-          scope.load_options('order_by', value);
+          scope.setOrder('order_by', value);
         });
       })
     }

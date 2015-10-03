@@ -4,7 +4,7 @@ app.factory('FormProducts', function () {
         name: '',
         'properties[sizes_ids]': null,
         'properties[colors_ids]': null,
-        qty: 36,
+        qty: 60,
         order: 'created_at desc',
         categories: '',
         start: '',

@@ -22,115 +22,72 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
     var numProds = 0;
 
     $scope.isNovidade = false;
-   $scope.isProduto = false;
+    $scope.isProduto = false;
 
-   var initUrlParameters = function(){
-     if($stateParams.type == 'novidades'){
-       urlParams.page_origin = 'novidades';
-       $scope.isNovidade = true;
-     }
-   }
+    $scope.buffer_products = [];
 
-    $scope.paginacao = function(count){
-
-     count = parseInt(count);
-     $scope.length = count;
-     $scope.length = parseInt(count / 99) + 1;
-     $scope.last_page = $scope.length;
-     $scope.show_pagination = $scope.length > 1;
-
-     if($scope.show_pagination && !$scope.custom_pages_showing && $scope.current_page == 1){
-        $scope.paginas = [];
-        if($scope.validate_presence_next_page){
-          $scope.have_next_page = true;
-        }
-        for(var i = 1; i <= $scope.length; i++){
-          //mostra até 9 blocos.
-          if (i < 10)
-            $scope.paginas.push(i);
-        }
-     }
-     $scope.donePag = true;
+    $scope.loadMoreProducts = function() {
+      var last = ($scope.products.length);
+      if ($scope.products.length <= $scope.buffer_products.length) {
+        $scope.products = $scope.products.concat($scope.buffer_products.slice(last, last + 19));
+      }
     };
 
-   $scope.paginate = function(page){
+    $scope.paginacao = function(count) {
 
-    page = parseInt(page);
+      count = parseInt(count);
+      $scope.length = count;
+      $scope.length = parseInt(count / 60) + 1;
+      $scope.last_page = $scope.length;
+      $scope.show_pagination = $scope.length > 1;
 
-    $scope.validate_presence_next_page = false;
+      if ($scope.show_pagination && !$scope.custom_pages_showing && $scope.current_page == 1) {
+        $scope.paginas = [];
+        if ($scope.validate_presence_next_page) {
+          $scope.have_next_page = true;
+        }
+        for (var i = 1; i <= $scope.length; i++) {
+          //mostra até 9 blocos.
+          if (i < 6)
+            $scope.paginas.push(i);
+        }
+      }
+      $scope.donePag = true;
+    };
 
-     var qty = parseInt(urlParams.qty);
+    $scope.paginate = function(page) {
 
-     if(page >= $scope.last_page){
+      page = parseInt(page);
+
+      $scope.validate_presence_next_page = false;
+
+      var qty = parseInt(urlParams.qty);
+
+      if (page >= $scope.last_page) {
         page = $scope.last_page;
-     }
+      }
 
-     $scope.have_next_page = page < $scope.last_page;
-     if (page == 1) {
+      $scope.have_next_page = page < $scope.last_page;
+      if (page == 1) {
         urlParams.start = 0;
         $scope.have_previous_page = false;
         $scope.show_pagination = true;
         $scope.custom_pages_showing = false;
-     }else{
+      } else {
         urlParams.start = (qty * page) - (qty - 1);
         $scope.have_previous_page = true;
-     }
+      }
 
-     //Mudar a paginação caso tenha passado da página 8
-     if(page > 7){
+      //Mudar a paginação caso tenha passado da página 8
+      if (page > 7) {
         var arr_pag_previous = [];
         var qty_sub_previous = 1;
-        for(var i = 0; i <= 4;i++){
-          arr_pag_previous.push((page+1) - qty_sub_previous);
+        for (var i = 0; i <= 4; i++) {
+          arr_pag_previous.push((page + 1) - qty_sub_previous);
           qty_sub_previous++;
         }
 
-        if($scope.last_page > page){
-          var arr_pag_next = arr_pag_previous.reverse();
-          var qty_sub_next = 1;
-          var diff_page = (5 + ($scope.last_page - page));
-
-          if (diff_page > 8)
-          diff_page = 8;
-
-          for(var id = 5; id <= diff_page;id++) {
-            if (page + qty_sub_next <= $scope.last_page){
-             arr_pag_previous.push(page + qty_sub_next);
-             qty_sub_next++;
-            }
-          }
-          //limpa o array de páginas
-          $scope.paginas.length = 0;
-          $scope.paginas = arr_pag_next;
-        }else{
-          $scope.paginas.length = 0;
-          $scope.paginas = arr_pag_previous.reverse();
-        }
-        $scope.custom_pages_showing = true;
-     }else{
-        var arr_pag_previous = [];
-
-        var qty_sub_previous;
-        if(page == 1){
-           qty_sub_previous = 2;
-        }else{
-           qty_sub_previous = 1;
-        }
-        //PÁGINAS ANTERIORES
-        for(var i = 0; i <= 4;i++){
-          if (page > 0 && ((((page+1) - qty_sub_previous) >= 0))){
-            if (page == 1){
-             arr_pag_previous.push(page);
-            }else{
-             if((page+1) - qty_sub_previous){
-               arr_pag_previous.push((page+1) - qty_sub_previous);
-             }
-            }
-            qty_sub_previous++;
-          }
-        }
-
-        if($scope.last_page > page){
+        if ($scope.last_page > page) {
           var arr_pag_next = arr_pag_previous.reverse();
           var qty_sub_next = 1;
           var diff_page = (5 + ($scope.last_page - page));
@@ -138,35 +95,91 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
           if (diff_page > 8)
             diff_page = 8;
 
-          for(var id = 5; id <= diff_page;id++){
-            if (page + qty_sub_next <= $scope.last_page){
-             arr_pag_previous.push(page + qty_sub_next);
-             qty_sub_next++;
+          for (var id = 5; id <= diff_page; id++) {
+            if (page + qty_sub_next <= $scope.last_page) {
+              arr_pag_previous.push(page + qty_sub_next);
+              qty_sub_next++;
             }
           }
           //limpa o array de páginas
           $scope.paginas.length = 0;
           $scope.paginas = arr_pag_next;
-        }else{
+        } else {
+          $scope.paginas.length = 0;
+          $scope.paginas = arr_pag_previous.reverse();
+        }
+        $scope.custom_pages_showing = true;
+      } else {
+        var arr_pag_previous = [];
+
+        var qty_sub_previous;
+        if (page == 1) {
+          qty_sub_previous = 2;
+        } else {
+          qty_sub_previous = 1;
+        }
+        //PÁGINAS ANTERIORES
+        for (var i = 0; i <= 4; i++) {
+          if (page > 0 && ((((page + 1) - qty_sub_previous) >= 0))) {
+            if (page == 1) {
+              arr_pag_previous.push(page);
+            } else {
+              if ((page + 1) - qty_sub_previous) {
+                arr_pag_previous.push((page + 1) - qty_sub_previous);
+              }
+            }
+            qty_sub_previous++;
+          }
+        }
+
+        if ($scope.last_page > page) {
+          var arr_pag_next = arr_pag_previous.reverse();
+          var qty_sub_next = 1;
+          var diff_page = (5 + ($scope.last_page - page));
+
+          if (diff_page > 8)
+            diff_page = 8;
+
+          for (var id = 5; id <= diff_page; id++) {
+            if (page + qty_sub_next <= $scope.last_page) {
+              arr_pag_previous.push(page + qty_sub_next);
+              qty_sub_next++;
+            }
+          }
+          //limpa o array de páginas
+          $scope.paginas.length = 0;
+          $scope.paginas = arr_pag_next;
+        } else {
           $scope.paginas.length = 0;
           $scope.paginas = arr_pag_previous.reverse();
         }
         //$scope.paginas = arr_pag_previous.reverse();
 
         $scope.custom_pages_showing = true;
-     }
+      }
 
-      if(page > 7){
-         $scope.custom_pages_showing = true;
-      }else{
-         $scope.custom_pages_showing = false;
+      if (page > 7) {
+        $scope.custom_pages_showing = true;
+      } else {
+        $scope.custom_pages_showing = false;
       }
 
       $scope.current_page = page;
       mount_url();
 
       getData(urlParams);
-   };
+    };
+
+    $scope.setOrder = function(type, value) {
+      if (type == 'order_by') {
+        if (value == 'created_at') {
+          urlParams.order = value + ' desc';
+        } else if (value == 'price') {
+          urlParams.order = value + ' asc';
+        }
+      }
+      getData(urlParams);
+    };
 
     var getData = function(urlParams) {
       $scope.showLoading = true;
@@ -178,7 +191,10 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
 
         numProds = data.response.hits.found;
 
-        $scope.products = data.response.hits.hit;
+
+        // Infinite Scroll
+        $scope.buffer_products = data.response.hits.hit;
+        $scope.products = $scope.buffer_products.slice(0, 20);
 
         // Filters
         var menuItems = data.response.facets;
@@ -317,8 +333,6 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
         $scope.paginacao(numProds);
         $scope.paginate($scope.current_page);
       }
-
-      initUrlParameters();
 
       if (freshData) {
         getData(urlParams);
