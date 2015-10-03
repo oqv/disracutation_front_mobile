@@ -1,15 +1,11 @@
-app.directive('dynamicUrl', ['Utils', function (Utils) {
+app.directive('dynamicUrl', function () {
     return {
       restrict: 'A',
       link: function postLink(scope, element, attr) {
-         var vitrine = attr.dynamicUrlSrc;
-         var vitrine2 = attr.hover;
-
          element.attr('src', attr.dynamicUrlSrc);
-
       }
     };
-}]);
+});
 
 app.directive('pageName', function(){
    return {
