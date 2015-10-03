@@ -259,6 +259,11 @@ hr{
   color: black;
 }
 
+.pagination>li.active>a{
+  background-color: #f0f0f0 !important;
+  border-color: #f0f0f0 !important;
+}
+
 .product .brand, .product .name, .product .price, .product .installment{
   color: black;
   text-align: center;

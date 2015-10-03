@@ -21,83 +21,83 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
 
     var numProds = 0;
 
-    $scope.paginacao = function(count) {
-      count = parseInt(count);
-      $scope.length = count;
-      $scope.length = parseInt(count / 99) + 1;
-      $scope.last_page = $scope.length;
-      $scope.show_pagination = $scope.length > 1;
+    $scope.paginacao = function(count){
 
-      if ($scope.show_pagination && !$scope.custom_pages_showing && $scope.current_page == 1) {
+     count = parseInt(count);
+     $scope.length = count;
+     $scope.length = parseInt(count / 99) + 1;
+     $scope.last_page = $scope.length;
+     $scope.show_pagination = $scope.length > 1;
+
+     if($scope.show_pagination && !$scope.custom_pages_showing && $scope.current_page == 1){
         $scope.paginas = [];
-        if ($scope.validate_presence_next_page) {
+        if($scope.validate_presence_next_page){
           $scope.have_next_page = true;
         }
-        for (var i = 1; i <= $scope.length; i++) {
+        for(var i = 1; i <= $scope.length; i++){
           //mostra até 9 blocos.
-          if (i < 6)
+          if (i < 10)
             $scope.paginas.push(i);
         }
-      }
-
-      console.log($scope.paginas);
-
-      $scope.donePag = true;
+     }
+     $scope.donePag = true;
     };
 
-    $scope.paginate = function(page) {
+   $scope.paginate = function(page){
 
-      $scope.validate_presence_next_page = false;
+    page = parseInt(page);
 
-      var qty = parseInt(urlParams.qty);
+    $scope.validate_presence_next_page = false;
 
-      if (page >= $scope.last_page) {
+     var qty = parseInt(urlParams.qty);
+
+     if(page >= $scope.last_page){
         page = $scope.last_page;
-      }
+     }
 
-      $scope.have_next_page = page < $scope.last_page;
-      if (page == 1) {
+     $scope.have_next_page = page < $scope.last_page;
+     if (page == 1) {
         urlParams.start = 0;
         $scope.have_previous_page = false;
         $scope.show_pagination = true;
         $scope.custom_pages_showing = false;
-      } else {
+     }else{
         urlParams.start = (qty * page) - (qty - 1);
         $scope.have_previous_page = true;
-      }
+     }
 
-      //Mudar a paginação caso tenha passado da página 8
-      if (page > 7) {
+     //Mudar a paginação caso tenha passado da página 8
+     if(page > 7){
         var arr_pag_previous = [];
         var qty_sub_previous = 1;
-        for (var i = 0; i <= 4; i++) {
-          arr_pag_previous.push((page + 1) - qty_sub_previous);
+        for(var i = 0; i <= 4;i++){
+          arr_pag_previous.push((page+1) - qty_sub_previous);
           qty_sub_previous++;
         }
 
-        if ($scope.last_page > page) {
+        if($scope.last_page > page){
           var arr_pag_next = arr_pag_previous.reverse();
           var qty_sub_next = 1;
           var diff_page = (5 + ($scope.last_page - page));
 
           if (diff_page > 8)
-            diff_page = 8;
+          diff_page = 8;
 
-          for (var id = 5; id <= diff_page; id++) {
-            if (page + qty_sub_next <= $scope.last_page) {
-              arr_pag_previous.push(page + qty_sub_next);
-              qty_sub_next++;
+          for(var id = 5; id <= diff_page;id++) {
+            if (page + qty_sub_next <= $scope.last_page){
+             arr_pag_previous.push(page + qty_sub_next);
+             qty_sub_next++;
             }
           }
           //limpa o array de páginas
           $scope.paginas.length = 0;
           $scope.paginas = arr_pag_next;
-        } else {
+        }else{
           $scope.paginas.length = 0;
           $scope.paginas = arr_pag_previous.reverse();
         }
         $scope.custom_pages_showing = true;
-      } else {
+     }else{
         var arr_pag_previous = [];
 
         var qty_sub_previous;
@@ -106,22 +106,21 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
         }else{
            qty_sub_previous = 1;
         }
-
         //PÁGINAS ANTERIORES
-        for (var i = 0; i <= 4; i++) {
-          if (page > 0 && ((((page + 1) - qty_sub_previous) >= 0))) {
-            if (page == 1) {
-              arr_pag_previous.push(page);
-            } else {
-              if ((page + 1) - qty_sub_previous) {
-                arr_pag_previous.push((page + 1) - qty_sub_previous);
-              }
+        for(var i = 0; i <= 4;i++){
+          if (page > 0 && ((((page+1) - qty_sub_previous) >= 0))){
+            if (page == 1){
+             arr_pag_previous.push(page);
+            }else{
+             if((page+1) - qty_sub_previous){
+               arr_pag_previous.push((page+1) - qty_sub_previous);
+             }
             }
             qty_sub_previous++;
           }
         }
 
-        if ($scope.last_page > page) {
+        if($scope.last_page > page){
           var arr_pag_next = arr_pag_previous.reverse();
           var qty_sub_next = 1;
           var diff_page = (5 + ($scope.last_page - page));
@@ -129,50 +128,45 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
           if (diff_page > 8)
             diff_page = 8;
 
-          for (var id = 5; id <= diff_page; id++) {
-            if (page + qty_sub_next <= $scope.last_page) {
-              arr_pag_previous.push(page + qty_sub_next);
-              qty_sub_next++;
+          for(var id = 5; id <= diff_page;id++){
+            if (page + qty_sub_next <= $scope.last_page){
+             arr_pag_previous.push(page + qty_sub_next);
+             qty_sub_next++;
             }
           }
           //limpa o array de páginas
           $scope.paginas.length = 0;
           $scope.paginas = arr_pag_next;
-        } else {
+        }else{
           $scope.paginas.length = 0;
           $scope.paginas = arr_pag_previous.reverse();
         }
         //$scope.paginas = arr_pag_previous.reverse();
 
         $scope.custom_pages_showing = true;
-      }
+     }
 
-      if (page > 7) {
-        $scope.custom_pages_showing = true;
-      } else {
-        $scope.custom_pages_showing = false;
+      if(page > 7){
+         $scope.custom_pages_showing = true;
+      }else{
+         $scope.custom_pages_showing = false;
       }
 
       $scope.current_page = page;
       mount_url();
 
       getData(urlParams);
-    };
-
-
-
+   };
 
     var getData = function(urlParams) {
       $rootScope.showLoading = true;
       requestAPI.products.customGET('', urlParams).then(function(data) {
 
-        if($scope.donePag == false){
-            $scope.paginacao(data.response.hits.found);
-         }
+        if ($scope.donePag == false) {
+          $scope.paginacao(data.response.hits.found);
+        }
 
-         numProds = data.response.hits.found;
-
-         
+        numProds = data.response.hits.found;
 
         $scope.products = data.response.hits.hit;
 
@@ -218,10 +212,10 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
       if (urlParams["price_range[to]"] != null) {
         params.priceTo = urlParams["price_range[to]"];
       }
-      if($scope.current_page > 1){
+      if ($scope.current_page > 1) {
         params.session = numProds
         params.page = $scope.current_page;
-      }else{
+      } else {
         params.session = null;
         params.page = null;
       }
@@ -230,14 +224,12 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
 
     var set_init_page = function() {
       urlParams.start = 0;
-       $scope.current_page = 1;
-       $scope.have_previous_page = false;
-       $scope.custom_pages_showing = false;
+      $scope.current_page = 1;
+      $scope.have_previous_page = false;
+      $scope.custom_pages_showing = false;
     };
 
     var click_filter_price = function(price, id) {
-      console.log("olaaaa", price, id);
-
       var p_from = price.substr(0, price.indexOf('|'));
       var p_to = price.substr(price.indexOf('|') + 1, price.length);
       urlParams['price_range[from]'] = p_from;
@@ -312,7 +304,7 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
       if (location.session && location.page) {
         freshData = false;
         $scope.current_page = location.page
-        var numProds = location.session;
+        numProds = location.session;
         $scope.paginacao(numProds);
         $scope.paginate($scope.current_page);
       }

@@ -1,5 +1,5 @@
 <!-- PAGINACAO -->
-<div class="row pagination-wraper">
+<div class="row pagination-wraper" ng-hide="showLoading || !show_pagination">
   <ul class="pagination">
 
    <li>
@@ -8,7 +8,7 @@
       </a>
    </li>
 
-   <li ng-repeat="pagItem in paginas track by $index">
+   <li ng-repeat="pagItem in paginas track by $index" ng-class="{active: pagItem == current_page}">
      <a href="javascript:;" ng-click="paginate(pagItem)">{{pagItem}}</a>
    </li>
 
