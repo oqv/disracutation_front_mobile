@@ -30,7 +30,6 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
        $scope.isNovidade = true;
      }
    }
-   initUrlParameters();
 
     $scope.paginacao = function(count){
 
@@ -318,6 +317,8 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
         $scope.paginacao(numProds);
         $scope.paginate($scope.current_page);
       }
+
+      initUrlParameters();
 
       if (freshData) {
         getData(urlParams);
