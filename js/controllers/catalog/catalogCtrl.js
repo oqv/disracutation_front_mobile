@@ -19,7 +19,7 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
 
     $scope.donePag = false;
 
-    var numProds = 0; 
+    var numProds = 0;
 
     $scope.paginacao = function(count) {
       count = parseInt(count);
@@ -46,8 +46,6 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
     };
 
     $scope.paginate = function(page) {
-
-      page = parseInt(page);
 
       $scope.validate_presence_next_page = false;
 
@@ -101,7 +99,14 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
         $scope.custom_pages_showing = true;
       } else {
         var arr_pag_previous = [];
-        var qty_sub_previous = 1;
+
+        var qty_sub_previous;
+        if(page == 1){
+           qty_sub_previous = 2;
+        }else{
+           qty_sub_previous = 1;
+        }
+
         //PÁGINAS ANTERIORES
         for (var i = 0; i <= 4; i++) {
           if (page > 0 && ((((page + 1) - qty_sub_previous) >= 0))) {
@@ -165,11 +170,9 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
             $scope.paginacao(data.response.hits.found);
          }
 
-         if($scope.current_page > 1){
-            numProds = data.response.hits.found;
-         }else{
-            numProds = 0;
-         }
+         numProds = data.response.hits.found;
+
+         
 
         $scope.products = data.response.hits.hit;
 
@@ -227,9 +230,9 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
 
     var set_init_page = function() {
       urlParams.start = 0;
-      // $scope.current_page = 1;
-      // $scope.have_previous_page = false;
-      // $scope.custom_pages_showing = false;
+       $scope.current_page = 1;
+       $scope.have_previous_page = false;
+       $scope.custom_pages_showing = false;
     };
 
     var click_filter_price = function(price, id) {
@@ -306,10 +309,10 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
         urlParams["price_range[to]"] = location.priceTo;
       }
 
-      if (location.numProds && location.page) {
+      if (location.session && location.page) {
         freshData = false;
         $scope.current_page = location.page
-        var numProds = location.numProds;
+        var numProds = location.session;
         $scope.paginacao(numProds);
         $scope.paginate($scope.current_page);
       }
