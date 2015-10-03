@@ -23,25 +23,35 @@
    </div>
    <div class="row-fluid">
       <div class="col-xs-6">
-        <select class="form-control">
-          <option selected>Tamanho</option>
+        <select class="form-control" set-filter>
+          <option selected value disabled>Tamanho</option>
+          <option ng-repeat="item in sizes" value dynamic-href dynamic-type="size" dynamic-value="{{item.value2}}">{{ item.value | formatFacets }}</option>
         </select>
       </div>
       <div class="col-xs-6">
-        <select class="form-control">
-          <option selected>Cor</option>
+        <select class="form-control" set-filter>
+          <option disabled selected value>Cor</option>
+          <option ng-repeat="item in colors | orderBy: orderByFacet" value dynamic-href dynamic-type="color" dynamic-value="{{item.value | formatFacetsURL}}">{{item.value | formatFacets}}</option>
         </select>
       </div>
    </div>
    <div class="row-fluid fix-top">
       <div class="col-xs-6">
-        <select class="form-control">
-          <option selected>Marcas</option>
+        <select class="form-control" set-filter>
+          <option disabled selected value>Marcas</option>
+          <option ng-repeat="item in brands | orderBy: orderByFacet" value dynamic-href dynamic-type="brand" dynamic-value="{{item.value | formatFacetsURL}}">{{item.value | formatSlugFacets}}</option>
         </select>
       </div>
       <div class="col-xs-6">
-        <select class="form-control">
-          <option selected>Faixa de preço</option>
+        <select class="form-control" filter-price>
+          <option disabled selected value>Faixa de preço</option>
+          <option value="1.00|50.00,1">até R$ 50,00</option>
+          <option value="50.01|100.00,2">de R$ 50,01 a R$ 100,00</option>
+          <option value="100.01|200.00,3">de R$ 100,01 a R$ 200,00</option>
+          <option value="200.01|500.00,4">de R$ 200,01 a R$ 500,00</option>
+          <option value="500.01|1000.00,5">de R$ 500,01 a R$ 1.000,00</option>
+          <option value="1000.01|2000.00,6">de R$ 1.000,01 a R$ 2.000,00</option>
+          <option value="2000.00|,7">a partir de R$ 2.000,01</option>
         </select>
       </div>
    </div>

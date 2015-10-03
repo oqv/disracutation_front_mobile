@@ -28,3 +28,30 @@ app.filter('variantOption', function(){
       return str;
    }
 });
+
+app.filter('formatFacets', function () {
+    return function (text) {
+      if(text == null){
+         return;
+      }
+      var str = text.split("::").pop();
+      return str;
+    };
+});
+
+app.filter('formatFacetsURL', function(){
+   return function(text){
+      var str = text.split("::")[1];
+      return str.replace(' ', '+');
+   }
+});
+
+app.filter('formatSlugFacets', function(){
+   return function (text){
+      if(text == null){
+         return;
+      }
+      var str = text.split("::")[0];
+      return str;
+   }
+});

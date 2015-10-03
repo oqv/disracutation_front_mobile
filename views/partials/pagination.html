@@ -1,17 +1,19 @@
 <!-- PAGINACAO -->
 <div class="row pagination-wraper">
   <ul class="pagination">
-    
+
    <li>
-      <a href="#" aria-label="Previous">
+      <a href="#" aria-label="Previous" ng-click="paginate(current_page-1)">
         <span aria-hidden="true">&laquo;</span>
       </a>
    </li>
 
-   <li><a href="#">1</a></li>
+   <li ng-repeat="pagItem in paginas track by $index">
+     <a href="javascript:;" ng-click="paginate(pagItem)">{{pagItem}}</a>
+   </li>
 
    <li>
-      <a href="#" aria-label="Next">
+      <a href="#" aria-label="Next" ng-click="paginate(current_page+1)">
         <span aria-hidden="true">&raquo;</span>
       </a>
    </li>

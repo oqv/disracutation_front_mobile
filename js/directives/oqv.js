@@ -111,9 +111,7 @@ app.directive('dynamicHref', ['identParam', '$stateParams', function (identParam
             currentUrl += "cor-" + url.color;
          }
 
-         currentUrl = currentUrl + "?new";
-
-         $(element).attr('href', currentUrl);
+         $(element).attr('value', currentUrl);
       }
     }
 }]);
@@ -139,6 +137,49 @@ app.directive('toggleFilter', function(){
           $('.action-filters').toggleClass("hidden");
           $('.filter-wraper').toggleClass("hidden");
         })
+      }
+   }
+});
+
+app.directive('setFilter', function(){
+   return {
+      restrict: 'A',
+      link: function(scope, element, attrs){
+         $(element).on('change', function(){
+            var value = $(element).find('option:selected')[0].value;
+
+            scope.$apply(function(){
+               scope.setFilter(value);
+            });
+         })
+      }
+   }
+});
+
+app.directive('filterPrice', function(){
+   return{
+      restrict: 'A',
+      link: function(scope, element, attrs){
+         $(element).on('change', function(){
+            var value = $(element).find('option:selected')[0].value;
+            scope.$apply(function(){
+               scope.setFilterPrice(value);
+            });
+         })
+      }
+   }
+});
+
+app.directive('filterOrder', function(){
+   return{
+      restrict: 'A',
+      link: function(scope, element, attrs){
+         $(element).on('change', function(){
+            var value = $(element).find('option:selected')[0].value;
+            scope.$apply(function(){
+               scope.load_options('order_by', value);
+            });
+         })
       }
    }
 });
