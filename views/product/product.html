@@ -11,9 +11,25 @@
   <!-- photo -->
   <div class="row">
     <div class="col-md-12 product_main_image">
-      <img alt="{{product.name}}" class="img-responsive" dynamic-url dynamic-url-src="{{arrDetalhes[0].value}}">
+
+      <div class="slider-for">
+          <div ng-repeat="item in arrDets" >
+            <img alt="{{product.name}}" class="img-responsive" src="{{item.value}}">
+          </div>
+      </div>
+
+      <div class="slider-nav">
+          <div ng-repeat="item in arrDetThumbs" >
+            <img alt="{{product.name}}" class="img-responsive" src="{{item.value}}">
+          </div>
+      </div>
+
     </div>
   </div>
+
+
+
+
   <!-- price -->
   <div class="row">
     <div class="col-md-12 product_price">
