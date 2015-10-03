@@ -3,7 +3,7 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
 
     var urlParams = angular.copy(FormProducts);
 
-    $rootScope.showLoading = false;
+    $scope.showLoading = false;
 
     $scope.show_pagination = false;
     $scope.have_previous_page = false;
@@ -159,7 +159,7 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
    };
 
     var getData = function(urlParams) {
-      $rootScope.showLoading = true;
+      $scope.showLoading = true;
       requestAPI.products.customGET('', urlParams).then(function(data) {
 
         if ($scope.donePag == false) {
@@ -176,10 +176,9 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
         $scope.colors = menuItems.colors_ids_names.buckets;
         $scope.brands = menuItems.brand_name_slug.buckets;
 
-
-        $rootScope.showLoading = false;
+        $scope.showLoading = true;
       }).catch(function(data) {
-        $rootScope.showLoading = false;
+        $scope.showLoading = false;
       });
     };
 

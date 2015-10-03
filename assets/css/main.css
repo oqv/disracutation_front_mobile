@@ -259,6 +259,12 @@ hr{
   color: black;
 }
 
+.pagination>li>a:hover, .pagination>li>span:hover{
+  color: #000 !important;
+  background-color: transparent !important;
+  border-color: #ddd !important;
+}
+
 .pagination>li.active>a{
   background-color: #f0f0f0 !important;
   border-color: #f0f0f0 !important;
