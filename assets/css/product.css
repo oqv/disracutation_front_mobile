@@ -1,0 +1,110 @@
+.product_title{
+	margin-top: 10px;
+}
+
+.product_main_image{
+	margin-top: 22px;		
+}
+.product_main_image img{
+	text-align: center;
+  margin: 0 auto;		
+}
+
+.product_price{
+	margin-top: 10px;
+	font-size: 11.5px;
+}
+
+.product_bt_buyout a{
+	/*main*/
+	margin-top: 10px;	
+	display: block;
+  width: 100%;
+	color: #fff;
+	line-height: 30px;
+	padding: 0;
+  min-height: 1em;
+  outline: 0;
+  
+	/*font*/
+	font-size: 20px;  
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+	
+	/* details */
+  transition: opacity .1s ease,background-color .1s ease,color .1s ease,box-shadow .1s ease,background .1s ease;
+  box-shadow: 0 0 0 1px transparent inset,0 0 0 0 rgba(39,41,43,.15) inset;
+  background: url(../images/bg-bt-buyout.jpg) repeat-x;
+  border: 1px solid #639785;
+  border-radius: 3px;
+}
+
+.prdocut_select_size{
+	margin-top: 10px;
+}
+
+.product_observations{
+	margin-top: 5px;
+	color: grey;
+	font-size: 12px;
+	font-style: italic;
+	text-align: center;
+}
+
+.product_whishlist{
+	margin-top: 12px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.product_description{
+/*	margin-top: 15px;
+	margin-bottom: 20px;*/
+}
+
+.panel-group>.panel-default {  
+  border-radius: none;
+  border: none;
+}
+
+.panel-default{
+	border: none;
+}
+
+.panel-heading {	
+	border-radius: 0px;
+	border: none;
+	border-bottom: 1px solid black;
+}
+.panel-default>.panel-heading {     
+  margin-bottom: 0px;
+  background-color: white;
+  border-color: transparent;
+}
+.panel-heading .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\2212";    /* adjust as needed, taken from bootstrap.css */
+    float: right;        /* adjust as needed */
+    color: grey;         /* adjust as needed */    
+}
+.panel-heading .accordion-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\002b";    /* adjust as needed, taken from bootstrap.css */
+}
+
+.panel-body {
+	border-top: none !important;
+	margin: 0;
+}
+
+.panel-group .panel:first-child {
+	border-top: 1px solid black;   
+}
+
+.panel-group .panel {
+	margin-top: 0.1px; 
+	border-bottom: 1px solid black;
+  
+}
