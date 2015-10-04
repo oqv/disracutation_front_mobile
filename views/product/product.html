@@ -1,0 +1,182 @@
+
+<!-- Conteudo -->
+<div class="container-fluid">
+  <!-- marca / name -->
+  <div class="row">
+    <div class="col-md-12 product_title">
+      <b>{{product.brand_name}}</b>
+      <br>
+      {{product.name}}
+    </div>
+  </div>
+  <!-- photo -->
+  <div class="row">
+    <div class="col-md-12 product_main_image">
+
+      <div class="slider-for">
+          <div ng-repeat="item in arrDets" >
+            <img alt="{{product.name}}" class="img-responsive" src="{{item.value}}">
+          </div>
+      </div>
+
+      <div class="slider-nav">
+          <div ng-repeat="item in arrDetThumbs" >
+            <img alt="{{product.name}}" class="img-responsive" src="{{item.value}}">
+          </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+  <!-- price -->
+  <div class="row">
+    <div class="col-md-12 product_price">
+      <p ng-show="product.cost_price == '0.0'">
+        <strong class="product-display-price" >{{ product.price | currency:"R$ ":2 | formatPrice }}</strong>
+      </p>
+      <p ng-show="product.cost_price != '0.0'">
+        de&nbsp;<del>{{product.cost_price | currency:"R$ ":2 | formatPrice }}</del><br />
+        por&nbsp;<strong>{{product.price | currency:"R$ ":2 | formatPrice }}</strong>
+      </p>
+      <p>
+        <strong>{{product.installment_number}}x de {{product.installment_value | currency:"R$ ":2 | formatPrice}}</strong> sem juros
+      </p>
+    </div>
+  </div>
+  <!-- size -->
+  <div class="row">
+    <div class="col-md-12 prdocut_select_size">
+      <select class="form-control" ng-model="cart.variant" ng-change="changeProduct()" ng-options="item as item.size_name for item in variants track by item.sku" placeholder="Escolha seu tamanho">
+        <option disabled selected value>Escolha seu tamanho</option>
+      </select>
+    </div>
+  </div>
+  <!-- buyout button -->
+  <div class="row" ng-show="product.sold_out == 0">
+    <div class="col-md-12 product_bt_buyout">
+      <a href ng-click="add_to_cart()" click="fbq('track', 'AddToCart');">comprar</a>
+    </div>
+  </div>
+
+  <!-- observations -->
+  <div class="row" ng-if="product.price >= 450 && produto.sold_out == 0">
+    <div class="col-md-12 product_observations">
+      Com frete e troca grátis*
+    </div>
+  </div>
+
+  <div class="row" ng-if="product.sold_out == 1">
+    <div class="col-md-12 product_observations">
+      Esgotado
+    </div>
+  </div>
+
+  <!-- whishlist -->
+  <div class="row">
+    <div class="col-md-12 product_whishlist" ng-click="add_to_wishlist()" onclick="fbq('track', 'AddToWishlist');">
+        <span alt="COLOCAR NA MINHA WHISHLIST" class="glyphicon glyphicon-heart"></span>
+        COLOCAR NA MINHA WHISHLIST
+    </div>
+  </div>
+
+  <!-- description and accordions -->
+  <div class="row">
+
+    <div aria-multiselectable="true" class="panel-group" id="accordion" role="tablist">
+
+      <div class="panel panel-default">
+        <div class="panel-heading" id="headingOne" role="tab">
+          <h4 class="panel-title product_accordion">
+            <a aria-controls="collapseOne" aria-expanded="false" class="accordion-toggle collapsed" data-parent="#accordion" data-toggle="collapse" href="#collapseOne" role="button">
+              DESCRIÇÃO
+            </a>
+          </h4>
+        </div>
+        <div aria-labelledby="headingOne" class="panel-collapse collapse" id="collapseOne" role="tabpanel">
+          <div class="panel-body">
+            <div class="html" ng-show="product.description != null" ng-bind-html="product.description"></div>
+            <br>
+            <p>Código do produto: {{product.erp_code}}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-default" ng-show="product.modeling_description != null">
+        <div class="panel-heading" id="headingTwo" role="tab">
+          <h4 class="panel-title">
+            <a aria-controls="collapseTwo" aria-expanded="false" class="accordion-toggle collapsed" data-parent="#accordion" data-toggle="collapse" href="#collapseTwo" role="button">
+              MEDIDAS DA PEÇA
+            </a>
+          </h4>
+        </div>
+        <div aria-labelledby="headingTwo" class="panel-collapse collapse" id="collapseTwo" role="tabpanel">
+          <div class="panel-body">
+            <div ng-show="product.modeling_description != null" ng-bind-html="product.modeling_description"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading" id="headingThree" role="tab">
+          <h4 class="panel-title">
+            <a aria-controls="collapseThree" aria-expanded="false" class="accordion-toggle collapsed" data-parent="#accordion" data-toggle="collapse" href="#collapseThree" role="button">
+              ENTREGA RÁPIDA E TROCA GRÁTIS
+            </a>
+          </h4>
+        </div>
+        <div aria-labelledby="headingThree" class="panel-collapse collapse" id="collapseThree" role="tabpanel">
+          <div class="panel-body">
+            <ul>
+               <li>Receba em até 24h em São Paulo, com opção de frete expresso.</li>
+               <br>
+               <li>Entregamos de 3 a 5 dias úteis (região Sul, Sudeste e Centro Oeste) e em até 9 dias úteis (Norte e Nordeste) com opções de Econômica, Rápida ou Expressa.</li>
+               <br>
+               <li>Comprou ou ganhou e quer troca? Troque grátis em até 30 dias, por qualquer produto à venda no site, de qualquer marca.</li>
+               <br>
+               <li>Nas compras acima de R$450, retiramos o produto a ser trocado na sua casa, sem custo.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $slickFor = $(".slider-for");
+    $slickNav = $(".slider-nav");
+
+    if($slickFor.hasClass("slick-initialized")) {
+      $slickFor.slick('unslick');
+    }
+    if($slickNav.hasClass("slick-initialized")) {
+      $slickNav.slick('unslick');
+    }
+
+    setTimeout(function() {
+      $slickFor.slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: $slickNav
+      });
+
+      $slickNav.slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        asNavFor: $slickFor,
+        dots: false,
+        centerMode: true,
+        focusOnSelect: true
+      });
+
+    }, 500);
+  })
+</script>

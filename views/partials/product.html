@@ -1,0 +1,18 @@
+<article class="product">
+  <a href="/{{item.fields.slug}}.html?new">
+    <img dynamic-url dynamic-url-src="{{arrVitrines[0]}}" alt="{{item.fields.name}}" class="img-responsive"/>
+    <div class="info">
+      <h3 class="brand">{{item.fields.brand_name}}</h3>
+      <h4 class="name"> {{item.fields.name}}</h4>
+      <p ng-show="item.fields.cost_price != '0.0'" class="price">
+        de&nbsp;<del>{{item.fields.cost_price | currency:"R$ ":2 | formatPrice}}</del>
+        <br />
+        por&nbsp;<strong>{{item.fields.price | currency:"R$ ":2 | formatPrice}}</strong>
+      </p>
+      <p ng-hide="item.fields.cost_price != '0.0'" class="price">
+      {{item.fields.price | currency:"R$ ":2 | formatPrice}}
+      </p>
+      <p class="installment">{{item.fields.installment_number}}x de {{item.fields.installment_value | currency:" R$ ":2 | formatPrice}} sem juros</p>
+    </div>
+  </a>
+</article>

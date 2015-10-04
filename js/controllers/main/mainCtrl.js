@@ -1,4 +1,5 @@
-app.controller('mainCtrl', ['$scope','$rootScope', function($scope, $rootScope){
+app.controller('mainCtrl', ['$scope','$rootScope', 'Page', function($scope, $rootScope, Page){
 
+  $scope.Page = Page;
 
 }]);
