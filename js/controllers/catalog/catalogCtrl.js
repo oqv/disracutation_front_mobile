@@ -1,5 +1,5 @@
-app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestAPI', 'OrderBy', '$state', '$location', '$stateParams', 'identParam',
-  function($scope, $rootScope, FormProducts, requestAPI, OrderBy, $state, $location, $stateParams, identParam) {
+app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestAPI', 'OrderBy', '$state', '$location', '$stateParams', 'identParam', 'Page',
+  function($scope, $rootScope, FormProducts, requestAPI, OrderBy, $state, $location, $stateParams, identParam, Page) {
 
     var urlParams = angular.copy(FormProducts);
 

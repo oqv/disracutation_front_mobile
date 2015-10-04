@@ -4,6 +4,8 @@ var css = [
   './assets/css/main.css',
   './assets/css/catalog.css',
   './assets/css/product.css',
+  './js/libs/slick/slick.css',
+  './js/libs/slick/slick-theme.css'
 ];
 
 var js  = [
@@ -12,6 +14,8 @@ var js  = [
   './js/libs/angresource.js',
   './js/libs/capitalize.min.js',
   './js/libs/underscore-min.js',
+  './js/libs/ng-infinitescroll.js',
+  './js/libs/slick/slick.js',
   './js/assets/js/bootstrap.min.js',
   './js/app.js',
   './js/config.js',
@@ -20,6 +24,7 @@ var js  = [
   './js/services/states.js',
   './js/directives/oqv.js',
   './js/directives/partials.js',
+  'js/filters/filters.js',
   './js/controllers/main/mainCtrl.js',
   './js/controllers/catalog/catalogCtrl.js',
   './js/controllers/product/productCtrl.js'
