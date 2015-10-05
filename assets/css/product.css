@@ -130,7 +130,7 @@
 }
 
 .product-modal .modal-body ul{
-	margin-bottom: 40px;
+	margin-bottom: 50px;
 	padding-left: 15px;
 }
 
@@ -152,4 +152,9 @@
 
 .product-modal .modal-body ul li a{
 	color: black;
+}
+
+.product-modal .modal-subtitle{
+	text-align: left;
+  padding-left: 15px;
 }
