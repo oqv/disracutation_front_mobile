@@ -231,12 +231,6 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
 
       $rootScope.currentBrand = null;
 
-      var setSubtitle = function(){
-
-         $scope.subtitle = $scope.currentBreadCrumb[$scope.currentBreadCrumb.length-1];
-
-      }
-
       var getData = function(urlParams) {
          $scope.showLoading = true;
          requestAPI.products.customGET('', urlParams).then(function(data) {
@@ -266,6 +260,8 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
 
             $rootScope.currentBreadCrumb = data.response.breadcrumb;
             if ($rootScope.currentBreadCrumb != undefined) {
+               $scope.subtitle = $rootScope.currentBreadCrumb[$rootScope.currentBreadCrumb.length-1];
+               $scope.slugToBack = $rootScope.currentBreadCrumb[$rootScope.currentBreadCrumb.length];
                $rootScope.setCurrentBreadCrumb();
             }
 
@@ -274,7 +270,6 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
                $rootScope.crumb_final = data.response.breadcrumb;
             }
 
-            setSubtitle();
 
             setPageTitle();
 
@@ -283,6 +278,11 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
             $scope.showLoading = false;
          });
       };
+
+      $scope.clearFilters = function(){
+         console.log('asdf');
+         $state.go($state.toState.name, null);
+      }
 
       $scope.setFilter = function(value) {
          var buf = value.split('/');
@@ -347,6 +347,10 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
          click_filter_price(buf[0], buf[1]);
       }
 
+      $scope.currentColor = "";
+      $scope.currentSize = "";
+      $scope.currentBrand = "";
+
       var identfyParam = function(param, lastParam) {
          var loc = $location.search();
          var type = "";
@@ -362,11 +366,13 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
                   //Cor
                   urlParams.colors_names = par[i].split("-")[1];
                   $scope.current_color_id = urlParams.colors_names;
+                  $scope.currentColor = $scope.current_color_id;
                   type = "Cor";
                } else if (par[i].split("-")[0] == "tamanho") {
                   //Tamanho
                   urlParams.sizes_names = par[i].split("-")[1];
                   $scope.current_size_id = urlParams.sizes_names;
+                  $scope.currentSize = $scope.current_size_id;
                   type = "Tamanho";
                }
             }
@@ -378,6 +384,7 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
             //Marca
             urlParams.brand_slug = param;
             $scope.current_brand_id = urlParams.brand_slug;
+            $scope.currentBrand = $scope.current_brand_id;
             type = "Marca";
          }
          generalType = type;

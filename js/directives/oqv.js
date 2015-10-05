@@ -114,7 +114,7 @@ app.directive('dynamicHref', ['identParam', '$stateParams', function(identParam,
             currentUrl += "cor-" + url.color;
          }
 
-         if (attr.dynamicType == "breadcrumb") {
+         if (attr.dynamicStyle == "breadcrumb") {
             currentUrl = currentUrl + "?new";
             $(element).attr('href', currentUrl);
          } else {
