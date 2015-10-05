@@ -1,0 +1,15 @@
+<div class="product-modal">
+  <div class="modal-header">
+      <h3 class="modal-title">Confirmação</h3>
+  </div>
+  <div class="modal-body">
+      <ul ng-hide="actionClick">
+          <li ng-repeat="variant in variants" ng-class="{'disabled' : variant.out_of_stock }" title="{{ (variant.out_of_stock) ? 'Esgotado' : '' }}">
+              <a target="_parent" ng-click="activeLoader(variant.out_of_stock)" ng-href="{{(variant.stock > 0) ? ('//www.oqvestir.com.br/basket/normaliza.aspx?action=garantiaestendida&partnumber=' + variant.sku) : 'javascript:;' }}">{{variant.size_name_no_filter}}</a>
+          </li>
+      </ul>
+      <div class="spinner-loader" ng-show="actionClick">
+      </div>
+      <p ng-show="actionClick">Inserindo no carrinho...</p>
+  </div>
+</div>
