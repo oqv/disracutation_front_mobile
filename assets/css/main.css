@@ -25,6 +25,24 @@ a:focus, a:visited, a:hover{
   font-size: 15px !important;
 }
 
+li.search{
+  border-bottom: 2px solid;
+}
+
+li.search .form-control{
+  width: 150px;
+  display: inline-block;
+  margin-left: -10px;
+  font-size: 12px;
+}
+
+li.search input[type="submit"]{
+  width: 70px;
+  background-color: #fff;
+  display: inline-block;
+  font-size: 12px;
+}
+
 #wrapper {
   margin-top: -20px;
   padding-left: 0;
