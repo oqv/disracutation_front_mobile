@@ -3,11 +3,11 @@
 }
 
 .product_main_image{
-	margin-top: 22px;		
+	margin-top: 22px;
 }
 .product_main_image img{
 	text-align: center;
-  margin: 0 auto;		
+  margin: 0 auto;
 }
 
 .product_price{
@@ -17,7 +17,7 @@
 
 .product_bt_buyout a{
 	/*main*/
-	margin-top: 10px;	
+	margin-top: 10px;
 	display: block;
   width: 100%;
 	color: #fff;
@@ -25,13 +25,13 @@
 	padding: 0;
   min-height: 1em;
   outline: 0;
-  
+
 	/*font*/
-	font-size: 20px;  
+	font-size: 20px;
   font-weight: 400;
   font-style: normal;
   text-align: center;
-	
+
 	/* details */
   transition: opacity .1s ease,background-color .1s ease,color .1s ease,box-shadow .1s ease,background .1s ease;
   box-shadow: 0 0 0 1px transparent inset,0 0 0 0 rgba(39,41,43,.15) inset;
@@ -63,7 +63,7 @@
 	margin-bottom: 20px;*/
 }
 
-.panel-group>.panel-default {  
+.panel-group>.panel-default {
   border-radius: none;
   border: none;
 }
@@ -72,12 +72,12 @@
 	border: none;
 }
 
-.panel-heading {	
+.panel-heading {
 	border-radius: 0px;
 	border: none;
 	border-bottom: 1px solid black;
 }
-.panel-default>.panel-heading {     
+.panel-default>.panel-heading {
   margin-bottom: 0px;
   background-color: white;
   border-color: transparent;
@@ -87,7 +87,7 @@
     font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
     content: "\2212";    /* adjust as needed, taken from bootstrap.css */
     float: right;        /* adjust as needed */
-    color: grey;         /* adjust as needed */    
+    color: grey;         /* adjust as needed */
 }
 .panel-heading .accordion-toggle.collapsed:after {
     /* symbol for "collapsed" panels */
@@ -100,11 +100,15 @@
 }
 
 .panel-group .panel:first-child {
-	border-top: 1px solid black;   
+	border-top: 1px solid black;
 }
 
 .panel-group .panel {
-	margin-top: 0.1px; 
+	margin-top: 0.1px;
 	border-bottom: 1px solid black;
-  
+
+}
+
+.product_accordion a{
+	font-size: 13px;
 }

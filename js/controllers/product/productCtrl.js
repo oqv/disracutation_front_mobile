@@ -10,10 +10,13 @@ app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$statePara
     }
   };
 
+  // Recupera usuário da Rakuten. Ele foi instanciado no MainCtrl.
+  $scope.current_user = $scope.$parent.current_user;
+
   var getData = function() {
     requestAPI.products.customGET(idProduct).then(function(data) {
 
-      $scope.product = data[0];      
+      $scope.product = data[0];
 
       $scope.arrDets = [];
       $scope.arrDetThumbs = [];
