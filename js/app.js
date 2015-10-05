@@ -1,4 +1,4 @@
-var app = angular.module('oqvMobileApp', ['ui.router', 'ngResource', 'ngSanitize', 'restangular', 'ui.bootstrap']);
+var app = angular.module('oqvMobileApp', ['ui.router', 'ngResource', 'ngSanitize', 'restangular', 'ui.bootstrap', 'ngCookies']);
 
 app.run(function($rootScope, $state){
 

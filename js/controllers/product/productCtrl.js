@@ -10,18 +10,20 @@ app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$statePara
     }
   };
 
+  // Recupera usuário da Rakuten. Ele foi instanciado no MainCtrl.
+  $scope.current_user = $scope.$parent.current_user;
+
   var getData = function() {
     requestAPI.products.customGET(idProduct).then(function(data) {
 
       $scope.product = data[0];
-
-      console.log($scope.product);
 
       $scope.arrDets = [];
       $scope.arrDetThumbs = [];
 
       get_variants($scope.product);
       get_images($scope.product);
+      setCarrousel();
 
     }).catch(function(data) {
 
@@ -48,6 +50,38 @@ app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$statePara
 
 
     }
+  }
+
+  var setCarrousel = function(){
+    $slickFor = $(".slider-for");
+    $slickNav = $(".slider-nav");
+
+    if($slickFor.hasClass("slick-initialized")) {
+      $slickFor.slick('unslick');
+    }
+    if($slickNav.hasClass("slick-initialized")) {
+      $slickNav.slick('unslick');
+    }
+
+    setTimeout(function() {
+      $slickFor.slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: $slickNav
+      });
+
+      $slickNav.slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        asNavFor: $slickFor,
+        dots: false,
+        centerMode: true,
+        focusOnSelect: true
+      });
+
+    }, 500);
   }
 
   // $(document).ready(function() {
