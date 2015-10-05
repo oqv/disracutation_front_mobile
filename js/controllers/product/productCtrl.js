@@ -191,7 +191,7 @@ app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$statePara
       animation: true,
       templateUrl: 'views/product/_modal_choose.html',
       controller: 'ModalProductCtrl',
-      size: 'lg',
+      size: 'sm',
       resolve: {
         variants: function () {
           return $scope.variants;
