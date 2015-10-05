@@ -4,6 +4,7 @@ var css = [
   './assets/css/main.css',
   './assets/css/catalog.css',
   './assets/css/product.css',
+  './assets/css/spinner.css',
   './js/libs/slick/slick.css',
   './js/libs/slick/slick-theme.css'
 ];
