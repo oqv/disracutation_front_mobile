@@ -137,6 +137,7 @@
 .product-modal .modal-body ul li{
 	float: left;
   margin-right: 10px;
+	margin-bottom: 10px;
   list-style: none;
   width: 40px;
   height: 40px;
