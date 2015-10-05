@@ -6,19 +6,23 @@
 
           <hr class="divider"></hr>
 
-          <pagination></pagination>
+          <pagination ng-hide="showLoading"></pagination>
 
           <!-- LISTAGEM DE PRODUTOS -->
           <div class="row">
+            <div class="row loader">
+              <div class="spinner-loader" ng-show="showLoading">
+              </div>
+            </div>
             <!-- PRODUTOS 2x -->
-            <div class="row">
+            <div class="row" ng-hide="showLoading">
               <div class="col-xs-6 col-md-6" ng-repeat="item in products" infinite-scroll="loadMoreProducts()" infinite-scroll-distance="3" infinite-scroll-disabled="produtos.length == buffer_products.length">
                 <product item="item"></product>
               </div>
             </div>
         </div>
 
-        <pagination></pagination>
+        <pagination ng-hide="showLoading"></pagination>
 
    </div>
 </div>
