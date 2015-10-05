@@ -23,24 +23,27 @@
    </div>
    <div class="row-fluid">
       <div class="col-xs-6">
-        <select class="form-control" set-filter>
+        <select class="form-control" set-filter ng-if="!currentSize">
           <option selected value disabled>Tamanho</option>
           <option ng-repeat="item in sizes" value dynamic-href dynamic-type="size" dynamic-value="{{item.value2}}">{{ item.value | formatFacets }}</option>
         </select>
+        <a ng-if="currentSize" dynamic-style="breadcrumb" dynamic-href dynamic-novidade="isNovidade" dynamic-type="size" dynamic-value="">{{currentSize}} <span class="close-filter">(x)</span></a>
       </div>
       <div class="col-xs-6">
-        <select class="form-control" set-filter>
+        <select class="form-control" set-filter ng-if="!currentColor">
           <option disabled selected value>Cor</option>
           <option ng-repeat="item in colors | orderBy: orderByFacet" value dynamic-href dynamic-type="color" dynamic-value="{{item.value | formatFacetsURL}}">{{item.value | formatFacets}}</option>
         </select>
+        <a ng-if="currentColor" dynamic-href dynamic-style="breadcrumb" dynamic-novidade="isNovidade" dynamic-type="color" dynamic-value="">{{currentColor}} <span class="close-filter">(x)</span></a>
       </div>
    </div>
    <div class="row-fluid fix-top">
       <div class="col-xs-6">
-        <select class="form-control" set-filter>
+        <select class="form-control" set-filter ng-if="!currentBrand">
           <option disabled selected value>Marcas</option>
           <option ng-repeat="item in brands | orderBy: orderByFacet" value dynamic-href dynamic-type="brand" dynamic-value="{{item.value | formatFacetsURL}}">{{item.value | formatSlugFacets}}</option>
         </select>
+        <a ng-if="currentBrand" dynamic-href dynamic-novidade="isNovidade" dynamic-style="breadcrumb" dynamic-type="brand" dynamic-action="backCat" dynamic-value="{{slugToBack}}">{{currentBrand}} <span class="close-filter">(x)</span></a>
       </div>
       <div class="col-xs-6">
         <select class="form-control" filter-price>

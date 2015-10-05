@@ -1,6 +1,25 @@
 <div id="breadcrumb">
   <ol class="breadcrumb">
     <li><a href="/">OQVESTIR</a></li>
-    <li ng-show="isNovidade" ng-class="{'active bold': isNovidade && !currentBreadCrumb && currentBrand == null}" href="/novidades">Lançamentos</li>
+
+   <li ng-if="isNovidade">
+      <a href="/novidades">
+         Lançamentos
+      </a>
+   </li>
+
+   <!-- <li ng-if="isNovidade">
+      <a href="/novidades/{{currentBrand | formatFacets}}" class="section" ng-class="{'bold' : !currentBreadCrumb}">{{currentBrand | formatSlugFacets}}</a>
+   </li>
+
+   <li ng-if="!isNovidade">
+      <a href="/{{currentBrand | formatFacets}}" class="section" ng-class="{'bold' : !currentBreadCrumb}">{{currentBrand | formatSlugFacets}}</a>
+   </li> -->
+
+   <li ng-repeat="bread in currentBreadCrumb">
+      <a href dynamic-href dynamic-style="breadcrumb" dynamic-type="cat" dynamic-novidade="isNovidade" dynamic-value="{{bread.slug}}" dynamic-level="{{bread.depth}}" ng-class="{'bold' : $last}">{{bread.value}}</a>
+   </li>
+
+
   </ol>
 </div>

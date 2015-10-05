@@ -21,9 +21,6 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
 
       var numProds = 0;
 
-      $scope.isNovidade = false;
-      $scope.isProduto = false;
-
       $scope.buffer_products = [];
 
       var generalType = ""
@@ -31,6 +28,19 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
       $scope.subtitle = "";
 
       $scope.dartMenus = Dart;
+
+      $rootScope.isNovidade = false;
+
+      $rootScope.isProduct = false;
+
+
+      var initUrlParameters = function() {
+         if ($stateParams.type == 'novidades') {
+            urlParams.page_origin = 'novidades';
+            $rootScope.isNovidade = true;
+         }
+      }
+      initUrlParameters();
 
       $scope.loadMoreProducts = function() {
          var last = ($scope.products.length);
@@ -202,6 +212,7 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
             Page.setTitle('Lançamentos - Encontre ' + subs + ' e mais | OQVestir');
             Page.setMeta('Lançamentos no OQVestir: ' + subs + ' da atual coleção da marca! Frete grátis, troca fácil e pagamento em até 10x sem juros. Aproveite...')
          } else {
+
             meta = 'Encontre ' + title.value + ' das melhores Marcas no OQVestir! ' + subs + ' e muito mais. Aproveite!';
             title = title.value + ' - ' + subs + ' e mais | OQVestir';
             Page.setTitle(title);
@@ -218,12 +229,7 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
 
       }
 
-      var setCurrentBreadCrumb = function() {
-         $rootScope.currentBreadCrumb.pop();
-         $rootScope.currentBreadCrumb.reverse();
-
-         $scope.subtitle = $rootScope.currentBreadCrumb[$rootScope.currentBreadCrumb.length - 1];
-      }
+      $rootScope.currentBrand = null;
 
       var getData = function(urlParams) {
          $scope.showLoading = true;
@@ -247,20 +253,23 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
 
             //Adiciono a marca filtrada no breadcrumb
             if ($scope.menuItems.brand_name_slug.buckets.length == 1) {
-               $scope.currentBrand = $scope.menuItems.brand_name_slug.buckets[0].value;
+               $rootScope.currentBrand = $scope.menuItems.brand_name_slug.buckets[0].value;
             } else {
-               $scope.currentBrand = null;
+               $rootScope.currentBrand = null;
             }
 
             $rootScope.currentBreadCrumb = data.response.breadcrumb;
             if ($rootScope.currentBreadCrumb != undefined) {
-               setCurrentBreadCrumb();
+               $scope.subtitle = $rootScope.currentBreadCrumb[$rootScope.currentBreadCrumb.length-1];
+               $scope.slugToBack = $rootScope.currentBreadCrumb[$rootScope.currentBreadCrumb.length];
+               $rootScope.setCurrentBreadCrumb();
             }
 
             var crumb = data.response.breadcrumb;
             if (crumb) {
                $rootScope.crumb_final = data.response.breadcrumb;
             }
+
 
             setPageTitle();
 
@@ -269,6 +278,11 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
             $scope.showLoading = false;
          });
       };
+
+      $scope.clearFilters = function(){
+         console.log('asdf');
+         $state.go($state.toState.name, null);
+      }
 
       $scope.setFilter = function(value) {
          var buf = value.split('/');
@@ -333,6 +347,10 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
          click_filter_price(buf[0], buf[1]);
       }
 
+      $scope.currentColor = "";
+      $scope.currentSize = "";
+      $scope.currentBrand = "";
+
       var identfyParam = function(param, lastParam) {
          var loc = $location.search();
          var type = "";
@@ -348,11 +366,13 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
                   //Cor
                   urlParams.colors_names = par[i].split("-")[1];
                   $scope.current_color_id = urlParams.colors_names;
+                  $scope.currentColor = $scope.current_color_id;
                   type = "Cor";
                } else if (par[i].split("-")[0] == "tamanho") {
                   //Tamanho
                   urlParams.sizes_names = par[i].split("-")[1];
                   $scope.current_size_id = urlParams.sizes_names;
+                  $scope.currentSize = $scope.current_size_id;
                   type = "Tamanho";
                }
             }
@@ -364,6 +384,7 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
             //Marca
             urlParams.brand_slug = param;
             $scope.current_brand_id = urlParams.brand_slug;
+            $scope.currentBrand = $scope.current_brand_id;
             type = "Marca";
          }
          generalType = type;
