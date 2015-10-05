@@ -1,4 +1,4 @@
-app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$stateParams', 'FormProducts', '$filter', function($scope, $rootScope, requestAPI, $stateParams, FormProducts, $filter) {
+app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$stateParams', 'FormProducts', '$filter', 'Page', '$location', function($scope, $rootScope, requestAPI, $stateParams, FormProducts, $filter, Page, $location) {
 
   var idProduct = $stateParams.id;
   var urlParams = angular.copy(FormProducts);
@@ -24,6 +24,15 @@ app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$statePara
       get_variants($scope.product);
       get_images($scope.product);
       setCarrousel();
+
+      Page.setTitle($scope.product.brand_name + " - " + $scope.product.name + " - OQVestir");
+      Page.setMeta("Encontre " + $scope.product.brand_name + " - " + $scope.product.name + " - OQVestir");
+
+      // Google Analytics
+      ga('send', 'pageview', {
+       'page': $location.url(),
+       'title': $scope.product.brand_name + " - " + $scope.product.name + " - OQVestir"
+      });
 
     }).catch(function(data) {
 
