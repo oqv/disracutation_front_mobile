@@ -14,6 +14,17 @@ a:focus, a:visited, a:hover{
   text-decoration: none !important;
 }
 
+.login{
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid;
+}
+
+.login .signin{
+  margin-left: 15px;
+  font-size: 15px !important;
+}
+
 #wrapper {
   margin-top: -20px;
   padding-left: 0;
@@ -118,6 +129,21 @@ a:focus, a:visited, a:hover{
   background: none;
 }
 
+.sidebar-nav .login div{
+  height: 45px;
+}
+
+.sidebar-nav .login a{
+  float: left;
+  font-size: 12px;
+}
+
+.sidebar-nav .login span{
+  float: left;
+  font-size: 12px;
+  text-indent: 5px;
+}
+
 @media(min-width:768px) {
     #wrapper {
       padding-left: 250px;
@@ -162,7 +188,7 @@ a:focus, a:visited, a:hover{
 
 .navbar .navbar-brand {float: none; display: block;}
 
-.navbar .navbar-brand img {width: 160px;padding-top: 5px;}
+.navbar .navbar-brand img {width: 160px;}
 
 .navbar .navbar-toggle { height: 49px; border: none; margin-right: 0;}
 
@@ -181,6 +207,12 @@ a:focus, a:visited, a:hover{
 }
 
 @media (max-width:767px) {
+  .icon-cart {
+    margin-top: 15px !important;
+  }
+
+  .navbar .navbar-brand img {width: 160px;padding-top: 5px;}
+
 	.custom-navbar .navbar-right {
 	    float: right;
 	    padding-right: 15px;
@@ -213,7 +245,7 @@ a:focus, a:visited, a:hover{
   width: 32px;
   height: 32px;
   display: block;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .icon-cart span{

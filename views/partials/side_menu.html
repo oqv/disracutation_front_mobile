@@ -1,6 +1,15 @@
 <ul class="nav navbar-nav sidebar-nav">
-  <li>
-    <a href="#"></a>
+  <li class="login">
+    <div ng-if="current_user.id == undefined">
+      <a class="signin" href="//www.oqvestir.com.br/logincadastro.aspx" target="_parent">Entrar</a>
+    </div>
+    <div ng-if="current_user.id != undefined">
+      <a href="//www.oqvestir.com.br/minhaconta" target="_parent">Minha Conta</a>
+      <span>|</span>
+      <a href="#">Olá Teste</a>
+      <span>|</span>
+      <a href="//http://www.oqvestir.com.br/minhaconta/logout.aspx" target="_parent">Sair</a>
+    </div>
   </li>
   <li>
     <a href="/novidades?new" toggle-menu>NOVIDADES</a>

@@ -1,6 +1,7 @@
 app.controller('mainCtrl', ['$scope','$rootScope', '$cookies', 'Page', function($scope, $rootScope, $cookies, Page){
 
   $scope.Page = Page;
+  $scope.current_user = {};
 
    $scope.getCartTotal = function(){
      var total = 0;
@@ -21,8 +22,6 @@ app.controller('mainCtrl', ['$scope','$rootScope', '$cookies', 'Page', function(
     };
   };
   $scope.initRakuten();
-
-
 
   $rootScope.setCurrentBreadCrumb = function() {
      $rootScope.currentBreadCrumb.pop();
