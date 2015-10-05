@@ -1,4 +1,4 @@
-app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$stateParams', 'FormProducts', '$filter', 'Page', '$location', function($scope, $rootScope, requestAPI, $stateParams, FormProducts, $filter, Page, $location) {
+app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$stateParams', 'FormProducts', '$filter', 'Page', '$location', '$modal', function($scope, $rootScope, requestAPI, $stateParams, FormProducts, $filter, Page, $location, $modal) {
 
   var idProduct = $stateParams.id;
   var urlParams = angular.copy(FormProducts);
@@ -56,8 +56,6 @@ app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$statePara
         });
       }
 
-
-
     }
   }
 
@@ -92,32 +90,6 @@ app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$statePara
 
     }, 500);
   }
-
-  // $(document).ready(function() {
-  //   var $slide = $(".slider-for");
-  //   var $nav = $(".slider-nav");
-  //
-  //   setTimeout(function() {
-  //     $slide.slick({
-  //       slidesToShow: 1,
-  //       slidesToScroll: 1,
-  //       arrows: true,
-  //       fade: true,
-  //       asNavFor: $nav
-  //     });
-  //
-  //     $nav.slick({
-  //       slidesToShow: 3,
-  //       slidesToScroll: 1,
-  //       asNavFor: $slide,
-  //       dots: true,
-  //       centerMode: true,
-  //       focusOnSelect: true
-  //     });
-  //
-  //   }, 500);
-  //
-  // })
 
   var get_variants = function(product) {
     for (i = 0; i < product.variants_sizes_colors.length; i++) {
@@ -178,7 +150,7 @@ app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$statePara
   $scope.actionClick = false;
   $scope.add_to_cart = function() {
     if (!$scope.cart.variant.sku != '') {
-      $scope.showSizeError = true;
+      $scope.open_modal_choose();
       return;
     }
     if ($scope.actionClick == false) {
@@ -214,13 +186,47 @@ app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$statePara
     });
   }
 
+  $scope.open_modal_choose = function(){
+    var modalInstance = $modal.open({
+      animation: true,
+      templateUrl: 'views/product/_modal_choose.html',
+      controller: 'ModalProductCtrl',
+      size: 'lg',
+      resolve: {
+        variants: function () {
+          return $scope.variants;
+        }
+      }
+    });
 
+    modalInstance.result.then(function (selectedItem) {
+
+    }, function () {
+      // Cancelado
+    });
+  }
 
   getData();
 
 
 
-
-
-
 }]);
+
+app.controller('ModalProductCtrl', function ($scope, $modalInstance, variants) {
+
+  $scope.variants = variants;
+  $scope.actionClick = false;
+
+  $scope.activeLoader = function(out_of_stock){
+    if(!out_of_stock)
+      $scope.actionClick = true;
+  }
+
+  $scope.ok = function () {
+    $modalInstance.close();
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+});
