@@ -3,12 +3,35 @@ app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$statePara
   var idProduct = $stateParams.id;
   var urlParams = angular.copy(FormProducts);
 
+  $rootScope.isProduct = true;
+
   $scope.variants = [];
   $scope.cart = {
     variant: {
       sku: ''
     }
   };
+
+  var mount_breadcrumb = function(){
+
+     var buf_bread = $scope.product.categories_names_slugs;
+     var bread = [];
+
+     for(var i in buf_bread){
+        var item = {};
+        item.depth = i + 1;
+        item.value = buf_bread[i].split("::")[0];
+        if(i == 0){
+           item.slug = buf_bread[i].split("::")[1];
+        }else{
+           item.slug = buf_bread[0].split("::")[1] + '/' + buf_bread[i].split("::")[1];
+        }
+        bread.push(item);
+     }
+
+     $rootScope.currentBreadCrumb = bread;
+
+  }
 
   // Recupera usuário da Rakuten. Ele foi instanciado no MainCtrl.
   $scope.current_user = $scope.$parent.current_user;
@@ -17,6 +40,7 @@ app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$statePara
     requestAPI.products.customGET(idProduct).then(function(data) {
 
       $scope.product = data[0];
+
 
       $scope.arrDets = [];
       $scope.arrDetThumbs = [];
@@ -33,6 +57,8 @@ app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$statePara
        'page': $location.url(),
        'title': $scope.product.brand_name + " - " + $scope.product.name + " - OQVestir"
       });
+
+      mount_breadcrumb();
 
     }).catch(function(data) {
 

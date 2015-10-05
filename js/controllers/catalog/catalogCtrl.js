@@ -21,9 +21,6 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
 
       var numProds = 0;
 
-      $scope.isNovidade = false;
-      $scope.isProduto = false;
-
       $scope.buffer_products = [];
 
       var generalType = ""
@@ -31,6 +28,19 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
       $scope.subtitle = "";
 
       $scope.dartMenus = Dart;
+
+      $rootScope.isNovidade = false;
+
+      $rootScope.isProduct = false; 
+
+
+      var initUrlParameters = function() {
+         if ($stateParams.type == 'novidades') {
+            urlParams.page_origin = 'novidades';
+            $rootScope.isNovidade = true;
+         }
+      }
+      initUrlParameters();
 
       $scope.loadMoreProducts = function() {
          var last = ($scope.products.length);
@@ -218,12 +228,7 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
 
       }
 
-      var setCurrentBreadCrumb = function() {
-         $rootScope.currentBreadCrumb.pop();
-         $rootScope.currentBreadCrumb.reverse();
-
-         $scope.subtitle = $rootScope.currentBreadCrumb[$rootScope.currentBreadCrumb.length - 1];
-      }
+      $rootScope.currentBrand = null;
 
       var getData = function(urlParams) {
          $scope.showLoading = true;
@@ -247,14 +252,14 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
 
             //Adiciono a marca filtrada no breadcrumb
             if ($scope.menuItems.brand_name_slug.buckets.length == 1) {
-               $scope.currentBrand = $scope.menuItems.brand_name_slug.buckets[0].value;
+               $rootScope.currentBrand = $scope.menuItems.brand_name_slug.buckets[0].value;
             } else {
-               $scope.currentBrand = null;
+               $rootScope.currentBrand = null;
             }
 
             $rootScope.currentBreadCrumb = data.response.breadcrumb;
             if ($rootScope.currentBreadCrumb != undefined) {
-               setCurrentBreadCrumb();
+               $rootScope.setCurrentBreadCrumb();
             }
 
             var crumb = data.response.breadcrumb;
