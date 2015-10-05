@@ -303,6 +303,10 @@ a:focus, a:visited, a:hover{
   margin: 0;
 }
 
+.product .price del{
+  color: #666;
+}
+
 .product .img-responsive{
   text-align: center;
   margin: 0 auto;
