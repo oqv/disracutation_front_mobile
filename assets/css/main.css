@@ -78,9 +78,13 @@ hr{
 }
 
 .sidebar-nav li a {
-    display: block;
-    text-decoration: none;
-    color: #999999;
+  display: block;
+  text-decoration: none;
+  color: #999999;
+}
+
+.sidebar-nav li a.outlet-link{
+  color: #9bead7;
 }
 
 .sidebar-nav li a:hover {
