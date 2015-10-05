@@ -112,3 +112,49 @@
 .product_accordion a{
 	font-size: 13px;
 }
+
+.modal-content{
+	margin-top: 100px;
+}
+
+.product-modal .modal-header{
+	padding: 7px 5px 7px 15px;
+}
+
+.product-modal .modal-title{
+	font-size: 15px;
+}
+
+.product-modal .modal-body{
+	text-align: center;
+}
+
+.product-modal .modal-body ul{
+	margin-bottom: 50px;
+	padding-left: 15px;
+}
+
+.product-modal .modal-body ul li{
+	float: left;
+  margin-right: 10px;
+  list-style: none;
+  width: 40px;
+  height: 40px;
+  display: block;
+  padding: 10px;
+  background-color: #ccc;
+  text-align: center;
+}
+
+.product-modal .modal-body ul li.disabled{
+	opacity: 0.5;
+}
+
+.product-modal .modal-body ul li a{
+	color: black;
+}
+
+.product-modal .modal-subtitle{
+	text-align: left;
+  padding-left: 15px;
+}

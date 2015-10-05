@@ -211,10 +211,10 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
 
          }
 
-         // ga('send', 'pageview', {
-         //    'page': $location.url(),
-         //    'title': title
-         // });
+         ga('send', 'pageview', {
+            'page': $location.url(),
+            'title': title
+         });
 
       }
 
