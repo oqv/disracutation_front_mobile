@@ -23,6 +23,7 @@ var js  = [
   './js/config.js',
   './js/router/router.js',
   './js/services/services.js',
+  './js/services/dart.js',
   './js/services/states.js',
   './js/directives/oqv.js',
   './js/directives/partials.js',
