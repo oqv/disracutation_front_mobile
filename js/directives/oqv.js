@@ -16,7 +16,6 @@ app.directive('pageName', function() {
   }
 });
 
-
 app.directive('dynamicHref', ['identParam', '$stateParams', function(identParam, $stateParams) {
   return {
     restrict: 'A',
@@ -115,7 +114,13 @@ app.directive('dynamicHref', ['identParam', '$stateParams', function(identParam,
         currentUrl += "cor-" + url.color;
       }
 
-      $(element).attr('value', currentUrl);
+      if(attr.dynamicType == "breadcrumb"){
+         currentUrl += "?new";
+         $(element).attr('href', currentUrl);
+      }else{
+         $(element).attr('value', currentUrl);
+      }
+
     }
   }
 }]);
