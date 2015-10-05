@@ -202,7 +202,7 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
         $scope.colors = menuItems.colors_ids_names.buckets;
         $scope.brands = menuItems.brand_name_slug.buckets;
 
-        $scope.showLoading = true;
+        $scope.showLoading = false;
       }).catch(function(data) {
         $scope.showLoading = false;
       });
