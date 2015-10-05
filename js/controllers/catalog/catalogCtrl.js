@@ -31,7 +31,7 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
 
       $rootScope.isNovidade = false;
 
-      $rootScope.isProduct = false; 
+      $rootScope.isProduct = false;
 
 
       var initUrlParameters = function() {
@@ -212,6 +212,7 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
             Page.setTitle('Lançamentos - Encontre ' + subs + ' e mais | OQVestir');
             Page.setMeta('Lançamentos no OQVestir: ' + subs + ' da atual coleção da marca! Frete grátis, troca fácil e pagamento em até 10x sem juros. Aproveite...')
          } else {
+
             meta = 'Encontre ' + title.value + ' das melhores Marcas no OQVestir! ' + subs + ' e muito mais. Aproveite!';
             title = title.value + ' - ' + subs + ' e mais | OQVestir';
             Page.setTitle(title);
@@ -229,6 +230,12 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
       }
 
       $rootScope.currentBrand = null;
+
+      var setSubtitle = function(){
+
+         $scope.subtitle = $scope.currentBreadCrumb[$scope.currentBreadCrumb.length-1];
+
+      }
 
       var getData = function(urlParams) {
          $scope.showLoading = true;
@@ -266,6 +273,8 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
             if (crumb) {
                $rootScope.crumb_final = data.response.breadcrumb;
             }
+
+            setSubtitle();
 
             setPageTitle();
 
