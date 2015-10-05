@@ -21,9 +21,6 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
 
       var numProds = 0;
 
-      $scope.isNovidade = false;
-      $scope.isProduto = false;
-
       $scope.buffer_products = [];
 
       var generalType = ""
@@ -31,6 +28,19 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
       $scope.subtitle = "";
 
       $scope.dartMenus = Dart;
+
+      $rootScope.isNovidade = false;
+
+      $rootScope.isProduct = false;
+
+
+      var initUrlParameters = function() {
+         if ($stateParams.type == 'novidades') {
+            urlParams.page_origin = 'novidades';
+            $rootScope.isNovidade = true;
+         }
+      }
+      initUrlParameters();
 
       $scope.loadMoreProducts = function() {
          var last = ($scope.products.length);
@@ -202,6 +212,7 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
             Page.setTitle('Lançamentos - Encontre ' + subs + ' e mais | OQVestir');
             Page.setMeta('Lançamentos no OQVestir: ' + subs + ' da atual coleção da marca! Frete grátis, troca fácil e pagamento em até 10x sem juros. Aproveite...')
          } else {
+
             meta = 'Encontre ' + title.value + ' das melhores Marcas no OQVestir! ' + subs + ' e muito mais. Aproveite!';
             title = title.value + ' - ' + subs + ' e mais | OQVestir';
             Page.setTitle(title);
@@ -218,11 +229,12 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
 
       }
 
-      var setCurrentBreadCrumb = function() {
-         $rootScope.currentBreadCrumb.pop();
-         $rootScope.currentBreadCrumb.reverse();
+      $rootScope.currentBrand = null;
 
-         $scope.subtitle = $rootScope.currentBreadCrumb[$rootScope.currentBreadCrumb.length - 1];
+      var setSubtitle = function(){
+
+         $scope.subtitle = $scope.currentBreadCrumb[$scope.currentBreadCrumb.length-1];
+
       }
 
       var getData = function(urlParams) {
@@ -247,20 +259,22 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
 
             //Adiciono a marca filtrada no breadcrumb
             if ($scope.menuItems.brand_name_slug.buckets.length == 1) {
-               $scope.currentBrand = $scope.menuItems.brand_name_slug.buckets[0].value;
+               $rootScope.currentBrand = $scope.menuItems.brand_name_slug.buckets[0].value;
             } else {
-               $scope.currentBrand = null;
+               $rootScope.currentBrand = null;
             }
 
             $rootScope.currentBreadCrumb = data.response.breadcrumb;
             if ($rootScope.currentBreadCrumb != undefined) {
-               setCurrentBreadCrumb();
+               $rootScope.setCurrentBreadCrumb();
             }
 
             var crumb = data.response.breadcrumb;
             if (crumb) {
                $rootScope.crumb_final = data.response.breadcrumb;
             }
+
+            setSubtitle();
 
             setPageTitle();
 
