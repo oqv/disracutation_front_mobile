@@ -31,7 +31,7 @@ app.directive('filters', function() {
 });
 
 //pagination
-app.directive('pagination', function() {
+app.directive('paginationOqv', function() {
   return {
     restrict: 'E',
     templateUrl: 'views/partials/pagination.html'
