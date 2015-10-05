@@ -69,6 +69,14 @@ li.search input[type="submit"]{
   display: none;
 }
 
+#wrapper.toggled .show-on-toggle{
+  display: block !important;
+}
+
+#wrapper.toggled .show-on-toggle i{
+  font-size: 30px;
+}
+
 #wrapper.toggled .increase-size{
   width: 100%;
 }
