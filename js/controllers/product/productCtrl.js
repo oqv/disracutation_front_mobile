@@ -47,7 +47,6 @@ app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$statePara
 
       get_variants($scope.product);
       get_images($scope.product);
-      setCarrousel();
 
       Page.setTitle($scope.product.brand_name + " - " + $scope.product.name + " - OQVestir");
       Page.setMeta("Encontre " + $scope.product.brand_name + " - " + $scope.product.name + " - OQVestir");
@@ -83,38 +82,6 @@ app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$statePara
       }
 
     }
-  }
-
-  var setCarrousel = function(){
-    $slickFor = $(".slider-for");
-    $slickNav = $(".slider-nav");
-
-    if($slickFor.hasClass("slick-initialized")) {
-      $slickFor.slick('unslick');
-    }
-    if($slickNav.hasClass("slick-initialized")) {
-      $slickNav.slick('unslick');
-    }
-
-    setTimeout(function() {
-      $slickFor.slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        fade: true,
-        asNavFor: $slickNav
-      });
-
-      $slickNav.slick({
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        asNavFor: $slickFor,
-        dots: false,
-        centerMode: true,
-        focusOnSelect: true
-      });
-
-    }, 500);
   }
 
   var get_variants = function(product) {
