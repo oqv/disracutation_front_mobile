@@ -171,8 +171,17 @@ li.search input[type="submit"]{
   background: none;
 }
 
+.sidebar-nav .login{
+  line-height: 30px;
+  padding-top: 10px;
+}
+
 .sidebar-nav .login div{
   height: 45px;
+}
+
+.sidebar-nav .fix-login-height div{
+  height: 65px;
 }
 
 .sidebar-nav .login a{
