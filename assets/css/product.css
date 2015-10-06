@@ -173,3 +173,16 @@
 	box-shadow: 0 0 0 1px transparent inset,0 0 0 0 rgba(39,41,43,.15) inset;
 	height: 33px;
 }
+
+.tell-me-modal input[type="email"]{
+	width: 75%;
+	display: inline-block;
+}
+
+.tell-me-modal button{
+	width: 20%;
+}
+
+.tell-me-modal .error label{
+	font-size: 11px;
+}
