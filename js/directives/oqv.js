@@ -91,7 +91,9 @@ app.directive('dynamicHref', ['identParam', '$stateParams', function(identParam,
             url.color = attr.dynamicValue;
          }
 
-         if (attr.dynamicLevel == 2 && attr.dynamicType == "cat" && identParam.isCat(attr.dynamicValue)) {
+         var dynamicLevel = parseInt(attr.dynamicLevel);
+
+         if (dynamicLevel == 2 && attr.dynamicType == "cat" && identParam.isCat(attr.dynamicValue)) {
             url.sub = "";
          }
 

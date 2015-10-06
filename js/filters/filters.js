@@ -61,4 +61,10 @@ app.filter('formatBrands', function(){
       var str = text.replace("-", " ");
       return str.toUpperCase();
    }
-})
+});
+
+app.filter('num', function() {
+    return function(input) {
+      return parseInt(input, 10);
+    };
+});

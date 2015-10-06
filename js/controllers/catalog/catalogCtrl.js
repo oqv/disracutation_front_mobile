@@ -260,6 +260,7 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
             }
 
             $rootScope.currentBreadCrumb = data.response.breadcrumb;
+
             if ($rootScope.currentBreadCrumb != undefined) {
               $scope.subtitle = $rootScope.currentBreadCrumb[$rootScope.currentBreadCrumb.length-1];
               $scope.slugToBack = $rootScope.currentBreadCrumb[$rootScope.currentBreadCrumb.length];

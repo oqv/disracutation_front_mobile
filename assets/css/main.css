@@ -297,6 +297,10 @@ li.search input[type="submit"]{
   font-size: 11px;
 }
 
+.breadcrumb li{
+   display: inline !important;
+}
+
 .breadcrumb>li+li:before{
   content: "\003e";
 }

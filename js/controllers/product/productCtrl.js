@@ -36,6 +36,8 @@ app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$statePara
 
      $rootScope.currentBreadCrumb = bread;
 
+     console.log($rootScope.currentBreadCrumb);
+
   }
 
   // Recupera usuário da Rakuten. Ele foi instanciado no MainCtrl.
@@ -45,7 +47,7 @@ app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$statePara
     requestAPI.products.customGET(idProduct).then(function(data) {
 
       $scope.product = data[0];
-
+      $rootScope.productBread = $scope.product;
 
       $scope.arrDets = [];
       $scope.arrDetThumbs = [];
