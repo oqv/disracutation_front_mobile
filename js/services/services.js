@@ -59,6 +59,9 @@ app.factory('identParam', function(){
             case "kids":
                return true;
             break;
+            case "fitness":
+               return true;
+            break;
             default:
                return false;
          }
