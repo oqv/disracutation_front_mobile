@@ -62,3 +62,11 @@ app.filter('formatBrands', function(){
       return str.toUpperCase();
    }
 })
+
+
+app.filter('formatColors', function(){
+   return function(text){
+      var str = text.replace("+", " ");
+      return str.toUpperCase();
+   }
+})
