@@ -10,11 +10,11 @@
 
    <!-- <li ng-if="isNovidade">
       <a href="/novidades/{{currentBrand | formatFacets}}" class="section" ng-class="{'bold' : !currentBreadCrumb}">{{currentBrand | formatSlugFacets}}</a>
-   </li>
+   </li>-->
 
-   <li ng-if="!isNovidade">
+   <li ng-if="!isNovidade && currentBrand">
       <a href="/{{currentBrand | formatFacets}}" class="section" ng-class="{'bold' : !currentBreadCrumb}">{{currentBrand | formatSlugFacets}}</a>
-   </li> -->
+   </li>
 
    <li ng-repeat="bread in currentBreadCrumb">
       <a href dynamic-href dynamic-style="breadcrumb" dynamic-type="cat" dynamic-novidade="isNovidade" dynamic-value="{{bread.slug}}" dynamic-level="{{bread.depth}}" ng-class="{'bold' : $last}">{{bread.value}}</a>
