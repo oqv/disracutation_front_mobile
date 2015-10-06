@@ -1,6 +1,18 @@
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
    $stateProvider
+      .state('health', {
+      abstract: true,
+      templateUrl: '<div>Ok</div>'
+      })
+
+      .state('health.check', {
+        url: "/healthcheck",
+        controller: function(){
+          console.log('Health OK');
+        }
+      })
+
       .state('app', {
          abstract: true,
          templateUrl: 'views/template/template.html'

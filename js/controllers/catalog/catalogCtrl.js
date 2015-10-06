@@ -236,7 +236,7 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
          requestAPI.products.customGET('', urlParams).then(function(data) {
 
             if ($scope.donePag == false) {
-               $scope.paginacao(data.response.hits.found);
+              $scope.paginacao(data.response.hits.found);
             }
 
             numProds = data.response.hits.found;
@@ -253,21 +253,21 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
 
             //Adiciono a marca filtrada no breadcrumb
             if ($scope.menuItems.brand_name_slug.buckets.length == 1) {
-               $rootScope.currentBrand = $scope.menuItems.brand_name_slug.buckets[0].value;
+              $rootScope.currentBrand = $scope.menuItems.brand_name_slug.buckets[0].value;
             } else {
-               $rootScope.currentBrand = null;
+              $rootScope.currentBrand = null;
             }
 
             $rootScope.currentBreadCrumb = data.response.breadcrumb;
             if ($rootScope.currentBreadCrumb != undefined) {
-               $scope.subtitle = $rootScope.currentBreadCrumb[$rootScope.currentBreadCrumb.length-1];
-               $scope.slugToBack = $rootScope.currentBreadCrumb[$rootScope.currentBreadCrumb.length];
-               $rootScope.setCurrentBreadCrumb();
+              $scope.subtitle = $rootScope.currentBreadCrumb[$rootScope.currentBreadCrumb.length-1];
+              $scope.slugToBack = $rootScope.currentBreadCrumb[$rootScope.currentBreadCrumb.length];
+              $rootScope.setCurrentBreadCrumb();
             }
 
             var crumb = data.response.breadcrumb;
             if (crumb) {
-               $rootScope.crumb_final = data.response.breadcrumb;
+              $rootScope.crumb_final = data.response.breadcrumb;
             }
 
 
