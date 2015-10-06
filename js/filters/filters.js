@@ -55,3 +55,10 @@ app.filter('formatSlugFacets', function(){
       return str;
    }
 });
+
+app.filter('formatBrands', function(){
+   return function(text){
+      var str = text.replace("-", " ");
+      return str.toUpperCase();
+   }
+})

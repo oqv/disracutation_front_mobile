@@ -145,7 +145,7 @@ li.search input[type="submit"]{
   color: #9bead7;
 }
 
-.sidebar-nav li a:hover {
+.sidebar-nav li a:hover, .sidebar-nav li a:focus {
   text-decoration: none;
   color: #fff;
   background: rgba(255,255,255,0.2);
@@ -328,6 +328,27 @@ li.search input[type="submit"]{
 
 .filters .form-control{
   border-radius: 0px;
+}
+
+.btn-close-cat{
+   padding: 5px;
+   border: 1px solid #000;
+   color: #000;
+   position: relative;
+}
+
+.btn-close-cat p{
+   white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 15px;
+    margin: 0;
+}
+
+.btn-close-cat span{
+   position: absolute;
+   right: 5px;
+   top: 7px;
 }
 
 .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn){
