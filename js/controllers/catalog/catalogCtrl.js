@@ -22,6 +22,7 @@ app.controller('catalogCtrl', ['$scope', '$rootScope', 'FormProducts', 'requestA
       var numProds = 0;
 
       $scope.buffer_products = [];
+      $scope.products = [];
 
       var generalType = ""
 

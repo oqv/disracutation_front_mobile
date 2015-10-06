@@ -15,9 +15,12 @@
               </div>
             </div>
             <!-- PRODUTOS 2x -->
-            <div class="row" ng-hide="showLoading">
-              <div class="col-xs-6 col-md-6" ng-repeat="item in products" infinite-scroll="loadMoreProducts()" infinite-scroll-distance="3" infinite-scroll-disabled="produtos.length == buffer_products.length">
-                <product item="item"></product>
+            <div class="row" ng-hide="showLoading" infinite-scroll="loadMoreProducts()" infinite-scroll-distance="3" infinite-scroll-disabled="products.length == buffer_products.length">
+              <div ng-repeat="item in products">
+                <div class="col-xs-6 col-md-6">
+                  <product item="item"></product>
+                </div>
+                <div ng-if="$index%2 == 1 || $index == 1" class="clearfix visible-xs-block"></div>
               </div>
             </div>
         </div>
