@@ -23,7 +23,7 @@ app.filter('variantOption', function(){
         str += " - Só 1 peça";
       }
       if(stock == 0){
-        str += " - Esgotado";
+        str += " - Lista de espera";
       }
       return str;
    }
