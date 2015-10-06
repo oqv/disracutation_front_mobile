@@ -1,0 +1,28 @@
+<div class="row product-modal tell-me-modal">
+  <div class="col-md-12">
+    <div class="modal-header">
+        <h3 class="modal-title">Avise-me quando chegar</h3>
+    </div>
+    <div class="modal-body">
+        <p class="modal-subtitle" ng-hide="isLoading || successSend">Você gostaria de ser avisada se esse produto voltar ao estoque? Coloque seu e-mail na lista:</p>
+        <div ng-hide="isLoading || successSend">
+          <form novalidate href="#" name="formTellMe" class="form-inline" ng-submit="sendTellMe(formTellMe)" ngs-validate>
+            <div class="form-group" ng-class="{'has-error': (formTellMe.email.$invalid && formTellMe.$submitted)}">
+              <input class="form-control" type="email" name="email" ng-model="tellMeProduct.email" placeholder="E-mail" required>
+              <div ng-show="formTellMe.email.$invalid && (formTellMe.email.$touched || formTellMe.$submitted)" class="error">
+                <label class="control-label" for="email">Por favor, preencha seu e-mail</label>
+              </div>
+              <button type="submit" class="btn btn-oqvestir">Ok</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="spinner-loader" ng-show="isLoading">
+        </div>
+        <p ng-show="successSend">Você será avisada quando o produto estiver disponível.</p>
+    </div>
+    <div class="modal-footer" ng-show="successSend">
+        <button class="btn btn-oqvestir" type="button" ng-click="ok()">OK</button>
+    </div>
+  </div>
+</div>

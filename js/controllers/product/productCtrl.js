@@ -73,6 +73,15 @@ app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$statePara
     return (str.indexOf(re) != -1);
   }
 
+  $scope.changeProduct = function(){
+    if($scope.cart.variant){
+      if($scope.cart.variant.out_of_stock){
+        $scope.open_modal_tell_me($scope.cart.variant.sku);
+        $scope.cart.variant = {};
+      }
+    }
+  }
+
   var get_images = function(product) {
     for (var i in product.images) {
       var str = product.images[i];
@@ -192,6 +201,26 @@ app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$statePara
     });
   }
 
+  $scope.open_modal_tell_me = function(sku){
+    var modalInstance = $modal.open({
+      animation: true,
+      templateUrl: 'views/product/_modal_tell_me.html',
+      controller: 'ModalProductTellMeCtrl',
+      size: 'sm',
+      resolve: {
+        sku: function () {
+          return sku;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+
+    }, function () {
+      // Cancelado
+    });
+  }
+
   $scope.open_modal_wishlist = function(sku){
     var modalInstance = $modal.open({
       animation: true,
@@ -255,6 +284,34 @@ app.controller('ModalProductWishCtrl', function ($scope, $modalInstance, sku, us
     $scope.message = 'Desculpe, não foi possível adicionar na wishlist.';
     $scope.isLoading = false;
   });
+
+  $scope.ok = function () {
+    $modalInstance.close();
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+});
+
+app.controller('ModalProductTellMeCtrl', function ($scope, $modalInstance, sku, requestAPI) {
+
+  $scope.sku = sku;
+  $scope.successSend = false;
+  $scope.tellMeProduct = {};
+
+  $scope.sendTellMe = function(form){
+    if(form.$valid){
+      $scope.isLoading = true;
+      requestAPI.utils.customPOST({ email: $scope.tellMeProduct.email, sku: $scope.sku }, 'tell_me_when_available', {}).then(function(data){
+        $scope.isLoading = false;
+        $scope.successSend = true;
+        $scope.tellMeProduct = {};
+      }, function(response){
+        $scope.isLoading = false;
+      });
+    }
+  }
 
   $scope.ok = function () {
     $modalInstance.close();
