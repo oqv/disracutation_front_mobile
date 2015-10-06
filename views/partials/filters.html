@@ -41,7 +41,7 @@
         </select>
          <a dynamic-href dynamic-novidade="isNovidade" dynamic-style="breadcrumb" dynamic-type="color" dynamic-value="" ng-if="currentColor">
             <div class="btn-close-cat">
-               <p>{{currentColor}}</p>
+               <p>{{currentColor | formatColors}}</p>
                <span class="pull-right"><i class="glyphicon glyphicon-remove filter-button" toggle-filter></i></span>
             </div>
          </a>
