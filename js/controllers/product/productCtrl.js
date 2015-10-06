@@ -160,28 +160,16 @@ app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$statePara
 
   $scope.add_to_wishlist = function() {
     if (!$scope.cart.variant.sku != '') {
-      $scope.showError = true;
-      $scope.messageError = "Por favor, escolha um tamanho";
+      alert('Por favor, escolha um tamanho.');
       return;
     }
 
     if (!$scope.current_user.id) {
-      $scope.showError = true;
-      $scope.messageError = "Você precisa estar logado para adicionar na Wishlist";
+      alert('Você precisa estar logado para adicionar na wishlist.');
       return;
     }
 
-    var data_to_send = {
-      sku: $scope.cart.variant.sku,
-      user_id: $scope.current_user.id
-    }
-    requestAPI.utils.customPOST({}, 'add_to_wishlist', data_to_send).then(function(data) {
-      $scope.showError = true;
-      $scope.messageError = "Adicionado a Wishlist com sucesso."
-    }).catch(function(data) {
-      $scope.showError = true;
-      $scope.messageError = "Desculpe, houve um erro ao tentar inserir na wishlist. Por favor, tente novamente."
-    });
+    $scope.open_modal_wishlist($scope.cart.variant.sku);
   }
 
   $scope.open_modal_choose = function(){
@@ -204,11 +192,33 @@ app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$statePara
     });
   }
 
+  $scope.open_modal_wishlist = function(sku){
+    var modalInstance = $modal.open({
+      animation: true,
+      templateUrl: 'views/product/_modal_wishlist.html',
+      controller: 'ModalProductWishCtrl',
+      size: 'sm',
+      resolve: {
+        user: function () {
+          return $scope.current_user;
+        },
+        sku: function() {
+          return sku;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+
+    }, function () {
+      // Cancelado
+    });
+  }
+
   getData();
 
-
-
 }]);
+// FIM CONTROLLER PRODUCT
 
 app.controller('ModalProductCtrl', function ($scope, $modalInstance, variants) {
 
@@ -219,6 +229,32 @@ app.controller('ModalProductCtrl', function ($scope, $modalInstance, variants) {
     if(!out_of_stock)
       $scope.actionClick = true;
   }
+
+  $scope.ok = function () {
+    $modalInstance.close();
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+});
+
+app.controller('ModalProductWishCtrl', function ($scope, $modalInstance, sku, user, requestAPI) {
+
+  $scope.isLoading = true;
+
+  var data_to_send = {
+    sku: sku,
+    user_id: user.id
+  }
+
+  requestAPI.utils.customPOST({}, 'add_to_wishlist', data_to_send).then(function(data) {
+    $scope.message = 'Adicionado na wishlist com sucesso.';
+    $scope.isLoading = false;
+  }).catch(function(data) {
+    $scope.message = 'Desculpe, não foi possível adicionar na wishlist.';
+    $scope.isLoading = false;
+  });
 
   $scope.ok = function () {
     $modalInstance.close();
