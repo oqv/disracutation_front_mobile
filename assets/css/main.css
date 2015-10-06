@@ -5,6 +5,13 @@
  */
 
 /* Toggle Styles */
+body {
+  padding-right: 0px !important
+}
+
+.modal-open {
+  overflow-y: auto;
+}
 
 hr{
   margin-bottom: 0;
