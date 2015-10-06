@@ -5,6 +5,11 @@ app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$statePara
 
   $rootScope.isProduct = true;
 
+  // Miau
+  $("html, body").animate({
+    scrollTop: 0
+  }, 50);
+
   $scope.variants = [];
   $scope.cart = {
     variant: {
