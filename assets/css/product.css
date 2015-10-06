@@ -10,6 +10,10 @@
   margin: 0 auto;
 }
 
+.product_main_image .loading-product{
+	text-align: center;
+}
+
 .product_price{
 	margin-top: 10px;
 	font-size: 11.5px;
