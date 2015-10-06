@@ -20,6 +20,12 @@ app.controller('mainCtrl', ['$scope','$rootScope', '$cookies', 'Page', function(
       name: $cookies.get('NomeClienteOQV'),
       email: $cookies.get('EmailCliente')
     };
+
+    $scope.current_user = {
+      id: 1,
+      name: 'Victor',
+      email: 'victor.alencar@oqvestir.com.br'
+    };
   };
   $scope.initRakuten();
 
