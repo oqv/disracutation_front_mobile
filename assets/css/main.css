@@ -413,6 +413,14 @@ li.search input[type="submit"]{
   height: 21px;
 }
 
+li.sac p{
+  color: #999999;
+}
+
+li.sac a{
+  display: inline-block;
+}
+
 .footer{
   border-top: 1px solid #eee;
   text-align: center;
