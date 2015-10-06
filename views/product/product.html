@@ -46,7 +46,7 @@
   <!-- size -->
   <div class="row">
     <div class="col-md-12 prdocut_select_size">
-      <select class="form-control" ng-model="cart.variant" ng-change="changeProduct()" ng-options="item as item.size_name for item in variants track by item.sku" placeholder="Escolha seu tamanho">
+      <select class="form-control" ng-model="cart.variant" ng-change="changeProduct()" ng-options="item as item.size_name disable when item.out_of_stock for item in variants track by item.sku" placeholder="Escolha seu tamanho">
         <option disabled selected value>Escolha seu tamanho</option>
       </select>
     </div>
