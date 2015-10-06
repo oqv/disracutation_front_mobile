@@ -12,14 +12,17 @@
   <!-- photo -->
   <div class="row">
     <div class="col-md-12 product_main_image" slick>
+      <div class="loading-product">
+        <div class="spinner-loader"></div>
+      </div>
 
-      <div class="slider-for">
+      <div class="slider-for" style="visibility: hidden;">
           <div ng-repeat="item in arrDets" >
             <img alt="{{product.name}}" class="img-responsive" src="{{item.value}}">
           </div>
       </div>
 
-      <div class="slider-nav">
+      <div class="slider-nav" style="visibility: hidden;">
           <div ng-repeat="item in arrDetThumbs" >
             <img alt="{{product.name}}" class="img-responsive" src="{{item.value}}">
           </div>

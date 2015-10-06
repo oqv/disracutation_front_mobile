@@ -199,6 +199,7 @@ app.directive('slick', function() {
       link: function(scope, element, attrs) {
         $slickFor = $(element).find(".slider-for");
         $slickNav = $(element).find(".slider-nav");
+        $loader = $(element).find(".loading-product");
 
         if($slickFor.hasClass("slick-initialized")) {
           $slickFor.slick('unslick');
@@ -224,6 +225,10 @@ app.directive('slick', function() {
             centerMode: true,
             focusOnSelect: true
           });
+
+          $slickFor.css('visibility', 'visible');
+          $slickNav.css('visibility', 'visible');
+          $loader.hide();
 
         }, 500);
       }
