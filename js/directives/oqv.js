@@ -192,3 +192,40 @@ app.directive('setOrder', function() {
       }
    }
 });
+
+app.directive('slick', function() {
+   return {
+      restrict: 'A',
+      link: function(scope, element, attrs) {
+        $slickFor = $(element).find(".slider-for");
+        $slickNav = $(element).find(".slider-nav");
+
+        if($slickFor.hasClass("slick-initialized")) {
+          $slickFor.slick('unslick');
+        }
+        if($slickNav.hasClass("slick-initialized")) {
+          $slickNav.slick('unslick');
+        }
+
+        setTimeout(function() {
+          $slickFor.slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            asNavFor: $slickNav
+          });
+
+          $slickNav.slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: $slickFor,
+            dots: false,
+            centerMode: true,
+            focusOnSelect: true
+          });
+
+        }, 500);
+      }
+   }
+});
