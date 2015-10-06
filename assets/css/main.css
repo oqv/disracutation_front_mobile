@@ -383,18 +383,22 @@ li.search input[type="submit"]{
   border-color: #f0f0f0 !important;
 }
 
+.product{
+   margin-bottom: 40px;
+}
+
 .product .brand, .product .name, .product .price, .product .installment{
   color: black;
   text-align: center;
 }
 
 .product .brand{
-  font-size: 15px;
+  font-size: 13px;
   font-weight: bold;
 }
 
 .product .name{
-  font-size: 13px;
+  font-size: 12px;
   font-weight: normal;
 }
 
