@@ -388,23 +388,32 @@ li.search input[type="submit"]{
 }
 
 .product .brand, .product .name, .product .price, .product .installment{
-  color: black;
-  text-align: center;
+   color: #333;
+   text-align: center;
 }
 
 .product .brand{
-  font-size: 13px;
-  font-weight: bold;
+   font-size: 15px;
+   font-weight: bold;
+   line-height: 1.2em;
+   margin-top: 15px;
 }
 
 .product .name{
-  font-size: 12px;
-  font-weight: normal;
+   font-size: 12px;
+   font-weight: normal;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   color: #666;
+   text-decoration: none;
+   line-height: 1.2em;
 }
 
 .product .price, .product .installment{
-  font-size: 11px;
-  font-weight: bold;
+   font-size: 11px;
+   font-weight: bold;
+   white-space: normal;
 }
 
 .product .price{
