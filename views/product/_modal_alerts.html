@@ -1,0 +1,26 @@
+<div class="row product-modal alerts-modal">
+  <div class="col-md-12">
+    <div class="modal-header">
+        <h3 class="modal-title">Alerta</h3>
+    </div>
+    <div class="modal-body">
+        <p class="modal-subtitle">{{msg}}</p>
+
+        <!-- <div ng-hide="isLoading || successSend">
+          <form novalidate href="#" name="formTellMe" class="form-inline" ng-submit="sendTellMe(formTellMe)" ngs-validate>
+            <div class="form-group" ng-class="{'has-error': (formTellMe.email.$invalid && formTellMe.$submitted)}">
+              <input class="form-control" type="email" name="email" ng-model="tellMeProduct.email" placeholder="E-mail" required>
+              <div ng-show="formTellMe.email.$invalid && (formTellMe.email.$touched || formTellMe.$submitted)" class="error">
+                <label class="control-label" for="email">Por favor, preencha seu e-mail</label>
+              </div>
+              <button type="submit" class="btn btn-oqvestir">Ok</button>
+            </div>
+          </form>
+        </div> -->
+
+    </div>
+    <div class="modal-footer" ng-show="successSend">
+        <button class="btn btn-oqvestir" type="button" ng-click="ok()">OK</button>
+    </div>
+  </div>
+</div>
