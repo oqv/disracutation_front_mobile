@@ -88,9 +88,9 @@
     <div aria-multiselectable="true" class="panel-group" id="accordion" role="tablist">
 
       <div class="panel panel-default">
-        <div class="panel-heading" id="headingOne" role="tab">
+        <div class="panel-heading" id="headingOne" role="tab" aria-controls="collapseOne" aria-expanded="false" data-parent="#accordion" data-toggle="collapse" data-target="#collapseOne" role="button">
           <h4 class="panel-title product_accordion">
-            <a aria-controls="collapseOne" aria-expanded="false" class="accordion-toggle collapsed" data-parent="#accordion" data-toggle="collapse" data-target="#collapseOne" role="button">
+            <a class="accordion-toggle collapsed" >
               DESCRIÇÃO
             </a>
           </h4>
@@ -105,9 +105,9 @@
       </div>
 
       <div class="panel panel-default" ng-show="product.modeling_description != null">
-        <div class="panel-heading" id="headingTwo" role="tab">
+        <div class="panel-heading" id="headingTwo" role="tab" aria-controls="collapseTwo" aria-expanded="false"  data-parent="#accordion" data-toggle="collapse" data-target="#collapseTwo" role="button">
           <h4 class="panel-title product_accordion">
-            <a aria-controls="collapseTwo" aria-expanded="false" class="accordion-toggle collapsed" data-parent="#accordion" data-toggle="collapse" data-target="#collapseTwo" role="button">
+            <a class="accordion-toggle collapsed">
               MEDIDAS DA PEÇA
             </a>
           </h4>
@@ -120,9 +120,9 @@
       </div>
 
       <div class="panel panel-default">
-        <div class="panel-heading" id="headingThree" role="tab">
+        <div class="panel-heading" id="headingThree" role="tab" aria-controls="collapseThree" aria-expanded="false" data-parent="#accordion" data-toggle="collapse" data-target="#collapseThree" role="button">
           <h4 class="panel-title product_accordion">
-            <a aria-controls="collapseThree" aria-expanded="false" class="accordion-toggle collapsed" data-parent="#accordion" data-toggle="collapse" data-target="#collapseThree" role="button">
+            <a class="accordion-toggle collapsed">
               ENTREGA RÁPIDA E TROCA GRÁTIS
             </a>
           </h4>
