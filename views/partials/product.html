@@ -6,15 +6,14 @@
       <h4 class="name"> {{item.fields.name}}</h4>
 
       <p ng-show="item.fields.cost_price != '0.0'" class="price">
-        de&nbsp;<del>{{item.fields.cost_price | currency:"R$ ":2 | formatPrice}}</del>
-        por&nbsp;<strong>{{item.fields.price | currency:"R$ ":2 | formatPrice}}</strong>
+        de&nbsp;<del>{{item.fields.cost_price | currency:"R$ ":2 | formatPrice}}</del><br>por&nbsp;<strong>{{item.fields.price | currency:"R$ ":2 | formatPrice}}</strong>
       </p>
 
       <p ng-hide="item.fields.cost_price != '0.0'" class="price">
       {{item.fields.price | currency:"R$ ":2 | formatPrice}}
       </p>
-
-      <p class="installment">{{item.fields.installment_number}}x de {{item.fields.installment_value | currency:" R$ ":2 | formatPrice}} sem juros</p>
+      
+      <p class="installment">{{item.fields.installment_number}}x de {{item.fields.installment_value | currency:" R$ ":2 | formatPrice}} <br> sem juros</p>
 
     </div>
   </a>
