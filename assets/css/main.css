@@ -239,7 +239,7 @@ li.search input[type="submit"]{
 
 .navbar .navbar-brand {float: none; display: block;}
 
-.navbar .navbar-brand img {width: 160px;}
+.navbar .navbar-brand img {width: 160px; margin: 0 auto;}
 
 .navbar .navbar-toggle { height: 49px; border: none; margin-right: 0;}
 
@@ -414,14 +414,16 @@ li.search input[type="submit"]{
    font-size: 11px;
    font-weight: bold;
    white-space: normal;
+   line-height: 12px;
 }
 
 .product .price{
   margin: 0;
+  margin-bottom: 8px;
 }
 
 .product .price del{
-  color: #666;
+  color: #999;
 }
 
 .product .img-responsive{
