@@ -17,6 +17,7 @@ var js  = [
   './js/libs/underscore-min.js',
   './js/libs/ng-infinitescroll.js',
   './js/libs/slick/slick.js',
+  './js/libs/accounting.js',
   './assets/js/bootstrap.min.js',
   './assets/js/ui-bootstrap-tpls.min.js',
   './js/app.js',
