@@ -35,14 +35,14 @@
   <div class="row">
     <div class="col-md-12 product_price">
       <p ng-show="product.cost_price == '0.0'">
-        <strong class="product-display-price" >{{ product.price | currency:"R$ ":2 | formatPrice }}</strong>
+        <strong class="product-display-price" >{{ product.price | currencyBRL }}</strong>
       </p>
       <p ng-show="product.cost_price != '0.0'">
-        de&nbsp;<del>{{product.cost_price | currency:"R$ ":2 | formatPrice }}</del><br />
-        por&nbsp;<strong>{{product.price | currency:"R$ ":2 | formatPrice }}</strong>
+        de&nbsp;<del>{{product.cost_price | currencyBRL }}</del><br />
+        por&nbsp;<strong>{{product.price | currencyBRL }}</strong>
       </p>
       <p>
-        <strong>{{product.installment_number}}x de {{product.installment_value | currency:"R$ ":2 | formatPrice}}</strong> sem juros
+        <strong>{{product.installment_number}}x de {{product.installment_value | currencyBRL}}</strong> sem juros
       </p>
     </div>
   </div>

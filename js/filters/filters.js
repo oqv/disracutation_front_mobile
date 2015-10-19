@@ -69,4 +69,11 @@ app.filter('formatColors', function(){
       var str = text.replace("+", " ");
       return str.toUpperCase();
    }
-})
+});
+
+app.filter('currencyBRL', function(){
+   return function(text){
+      var str = accounting.formatMoney(text, "R$", parseInt(2), ".", ",");
+      return str;
+   }
+});

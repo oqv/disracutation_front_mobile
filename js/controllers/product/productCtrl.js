@@ -169,19 +169,19 @@ app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$statePara
 
    $scope.add_to_wishlist = function() {
       if (!$scope.cart.variant.sku != '') {
-         $scope.open_modal_alerts('Por favor, escolha um tamanho.');
+         $scope.open_modal_alerts('Por favor, escolha um tamanho.', false);
          return;
       }
 
       if (!$scope.current_user.id) {
-         $scope.open_modal_alerts('Você precisa estar logado para adicionar na wishlist.');
+         $scope.open_modal_alerts('Você precisa estar logado para adicionar na wishlist.', true);
          return;
       }
 
       $scope.open_modal_wishlist($scope.cart.variant.sku);
    }
 
-   $scope.open_modal_alerts = function(msg) {
+   $scope.open_modal_alerts = function(msg, login) {
       var modalInstance = $modal.open({
          animation: true,
          templateUrl: 'views/product/_modal_alerts.html',
@@ -190,6 +190,9 @@ app.controller('productCtrl', ['$scope', '$rootScope', 'requestAPI', '$statePara
          resolve: {
             msg: function(){
                return msg;
+            },
+            login: function(){
+               return login;
             }
          }
       });
