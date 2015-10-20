@@ -194,3 +194,7 @@
 .slick-slide{
 	outline: none;
 }
+
+.slick-center img {
+    border: 1px solid #aaa;
+}
