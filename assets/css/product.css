@@ -186,3 +186,15 @@
 .tell-me-modal .error label{
 	font-size: 11px;
 }
+
+.slick-prev:before, .slick-next:before{
+	color: #000 !important;
+}
+
+.slick-slide{
+	outline: none;
+}
+
+.slick-center img {
+    border: 1px solid #aaa;
+}
