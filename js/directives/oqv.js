@@ -223,7 +223,8 @@ app.directive('slick', function() {
             asNavFor: $slickFor,
             dots: false,
             centerMode: true,
-            focusOnSelect: true
+            focusOnSelect: true,
+            centerPadding: '40px',
           });
 
           $slickFor.css('visibility', 'visible');
