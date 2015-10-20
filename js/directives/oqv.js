@@ -222,9 +222,10 @@ app.directive('slick', function() {
             slidesToScroll: 1,
             asNavFor: $slickFor,
             dots: false,
-            centerMode: true,
+            centerMode: false,
             focusOnSelect: true,
             centerPadding: '40px',
+            infinite: false
           });
 
           $slickFor.css('visibility', 'visible');

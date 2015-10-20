@@ -198,3 +198,19 @@
 .slick-center img {
     border: 1px solid #aaa;
 }
+
+
+
+.slick-prev, .slick-next{
+	height: 20px !important;
+}
+.slick-next:before, .slick-prev:before{
+	font-size: 20px !important;
+}
+.slick-next:before {
+    content: '>' !important;
+}
+
+.slick-prev:before {
+    content: '<' !important;
+}
